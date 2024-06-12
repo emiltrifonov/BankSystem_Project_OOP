@@ -128,11 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BankSystem_Project_OOP.cpp" />
-    <ClCompile Include="C:\Users\em4it\Downloads\MyString.cpp" />
+    <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\em4it\Downloads\MyString.h" />
-    <ClInclude Include="C:\Users\em4it\Downloads\MyVector.hpp" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="MyString.h" />
+    <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="WeakPtr.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
