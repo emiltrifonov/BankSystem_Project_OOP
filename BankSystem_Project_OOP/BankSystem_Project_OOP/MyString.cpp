@@ -3,8 +3,6 @@
 #include "MyString.h"
 #pragma warning (disable:4996)
 
-MyString::MyString() = default;
-
 MyString::MyString(st cap)
 {
 	text = new char[cap + 1];
@@ -71,14 +69,14 @@ MyString& MyString::operator=(MyString&& other) noexcept
 	return *this;
 }
 
-MyString& MyString::operator+=(const MyString& other)
-{
-	if (capacity < size + other.size) {
-		resize(size + other.size);
+MyString& MyString::operator+=(const MyString& other) {
+	if (capacity < size + other.size + 1) {
+		resize(size + other.size + 1);
 	}
 
-	strcat(text, other.text);
+	std::strncpy(text + size, other.text, other.size);
 	size += other.size;
+	text[size] = '\0';
 
 	return *this;
 }
@@ -130,7 +128,7 @@ void MyString::moveFrom(MyString&& other)
 
 MyString operator+(const MyString& first, const MyString& second)
 {
-	MyString result(first.getLength() + second.getLength());
+	MyString result(first.getLength() + second.getLength() + 1);
 	result += first;
 	result += second;
 	return result;

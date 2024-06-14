@@ -24,6 +24,33 @@
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Employee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdPartyEmployee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cheque.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CloseTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">
@@ -38,7 +65,37 @@
     <ClInclude Include="Client.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WeakPtr.hpp">
+    <ClInclude Include="Employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cheque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdPartyEmployee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeterogeneousContainer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Task.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UniqueID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

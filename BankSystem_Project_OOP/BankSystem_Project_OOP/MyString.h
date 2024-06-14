@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #define st size_t
 
 class MyString {
@@ -15,7 +16,7 @@ private:
 	void resize(st);
 
 public:
-	MyString();
+	MyString() = default;
 	MyString(st);
 	MyString(const char*);
 	MyString(const MyString&); // C.C.

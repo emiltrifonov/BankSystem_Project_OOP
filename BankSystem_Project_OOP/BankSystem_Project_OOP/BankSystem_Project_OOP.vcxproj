@@ -127,16 +127,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Bank.cpp" />
     <ClCompile Include="BankSystem_Project_OOP.cpp" />
+    <ClCompile Include="ChangeTask.cpp" />
+    <ClCompile Include="Cheque.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CloseTask.cpp" />
+    <ClCompile Include="Employee.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="OpenTask.cpp" />
+    <ClCompile Include="ThirdPartyEmployee.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
+    <ClInclude Include="Bank.h" />
+    <ClInclude Include="ChangeTask.h" />
+    <ClInclude Include="Cheque.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="CloseTask.h" />
+    <ClInclude Include="Employee.h" />
+    <ClInclude Include="HeterogeneousContainer.hpp" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="OpenTask.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="ThirdPartyEmployee.h" />
+    <ClInclude Include="UniqueID.h" />
     <ClInclude Include="User.h" />
-    <ClInclude Include="WeakPtr.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

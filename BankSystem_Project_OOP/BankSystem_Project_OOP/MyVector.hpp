@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <exception>
+#include <stdio.h>
 #define st size_t
 
 template<class T>
@@ -8,15 +9,16 @@ class MyVector {
 public:
 	MyVector();
 	MyVector(int);
-	MyVector(const MyVector&);
-	MyVector(MyVector&&);
+	MyVector(const MyVector<T>&);
+	MyVector(MyVector<T>&&);
 
-	MyVector& operator=(const MyVector&);
-	MyVector& operator=(MyVector&&);
+	MyVector<T>& operator=(const MyVector<T>&);
+	MyVector<T>& operator=(MyVector<T>&&);
 
 	void push(const T&);
 	void push(T&&);
 	void pop();
+	void popAt(int);
 	const T& peek() const;
 
 	st getSize() const;
@@ -31,8 +33,8 @@ public:
 private:
 
 	void free();
-	void copyFrom(const MyVector&);
-	void moveFrom(MyVector&&);
+	void copyFrom(const MyVector<T>&);
+	void moveFrom(MyVector<T>&&);
 
 	void resize(st);
 
@@ -57,13 +59,13 @@ MyVector<T>::MyVector(int cap) {
 }
 
 template<class T>
-MyVector<T>::MyVector(const MyVector& other)
+MyVector<T>::MyVector(const MyVector<T>& other)
 {
 	copyFrom(other);
 }
 
 template<class T>
-MyVector<T>::MyVector(MyVector&& other)
+MyVector<T>::MyVector(MyVector<T>&& other)
 {
 	moveFrom(std::move(other));
 }
@@ -121,6 +123,20 @@ void MyVector<T>::pop()
 }
 
 template<class T>
+void MyVector<T>::popAt(int index)
+{
+	if (index < 0 || index >= size) {
+		throw std::out_of_range("Index out of range");
+	}
+
+	for (int i = index; i < size - 1; ++i) {
+		data[i] = std::move(data[i + 1]);
+	}
+
+	size--;
+}
+
+template<class T>
 const T& MyVector<T>::peek() const
 {
 	if (isEmpty()) {
@@ -139,7 +155,7 @@ st MyVector<T>::getSize() const
 template<class T>
 bool MyVector<T>::isEmpty() const
 {
-	return !size;
+	return size == 0;
 }
 
 template<class T>
@@ -183,9 +199,9 @@ void MyVector<T>::free()
 }
 
 template<class T>
-void MyVector<T>::copyFrom(const MyVector& other)
+void MyVector<T>::copyFrom(const MyVector<T>& other)
 {
-	data = new T[other.size];
+	data = new T[other.capacity];
 	size = other.size;
 	capacity = other.capacity;
 
@@ -196,7 +212,7 @@ void MyVector<T>::copyFrom(const MyVector& other)
 }
 
 template<class T>
-void MyVector<T>::moveFrom(MyVector&& other)
+void MyVector<T>::moveFrom(MyVector<T>&& other)
 {
 	data = other.data;
 	size = other.size;
@@ -211,7 +227,7 @@ void MyVector<T>::resize(st newCap)
 	capacity = newCap;
 	T* newData = new T[capacity];
 
-	for (size_t i = 0; i < size; i++) {
+	for (st i = 0; i < size; i++) {
 		newData[i] = std::move(data[i]);
 	}
 
