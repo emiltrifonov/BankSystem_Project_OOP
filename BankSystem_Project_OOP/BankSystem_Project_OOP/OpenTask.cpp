@@ -25,10 +25,10 @@ void OpenTask::approve()
 void OpenTask::disapprove(const MyString& reason)
 {
 	// Tui cqloto generirane na message trqa e nqkude otdelno
-	MyString message = "Your OPEN request was not approved. Reason: ";
-	message += reason;
+	MyString messageText = "Your OPEN request was not approved. Reason: ";
+	messageText += reason;
 
-	cPtr->addMessage(message);
+	//cPtr->addMessage();
 }
 
 Task* OpenTask::clone() const

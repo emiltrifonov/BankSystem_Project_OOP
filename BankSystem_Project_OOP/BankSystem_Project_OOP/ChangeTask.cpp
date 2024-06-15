@@ -31,7 +31,7 @@ void ChangeTask::approve()
 
 void ChangeTask::disapprove(const MyString& reason)
 {
-	cPtr->addMessage(reason);
+	//cPtr->addMessage(reason);
 }
 
 void ChangeTask::validate() const

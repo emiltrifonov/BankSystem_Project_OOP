@@ -4,7 +4,6 @@
 
 class Account {
 public:
-	Account() = default;
 	Account(const Client* ptr, int id);
 	void addBalance(double toAdd);
 
@@ -13,7 +12,7 @@ public:
 	const Client* getHolder() const;
 
 private:
-	const Client* holder = nullptr;
+	const Client* holder;
 	double balance = 0;
 	int id = 0;
 };

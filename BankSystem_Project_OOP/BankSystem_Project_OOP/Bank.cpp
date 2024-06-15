@@ -11,7 +11,7 @@ const MyString& Bank::getName() const
 
 void Bank::openAccount(const Client* cPtr)
 {
-	accounts.push(Account(cPtr, getID()));
+	accounts.add(Account(cPtr, getID()));
 }
 
 void Bank::closeAccount(int ID)
@@ -19,7 +19,7 @@ void Bank::closeAccount(int ID)
 	for (size_t i = 0; i < accounts.getSize(); i++)
 	{
 		if (accounts[i].getID() == ID) {
-			accounts.popAt(i);
+			accounts.removeAt(i);
 			return;
 		}
 	}
@@ -41,5 +41,5 @@ bool Bank::isAccountValid(int ID, const Client* cPtr) const
 
 void Bank::addEmployee(const Employee& eRef)
 {
-	employees.push(eRef);
+	employees.add(eRef);
 }

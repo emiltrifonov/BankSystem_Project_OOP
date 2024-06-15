@@ -21,7 +21,7 @@ private:
 	Client* cPtr;
 	Bank* oldBankPtr;
 	Bank* newBankPtr;
-	int oldAccID;
+	const int oldAccID;
 
 	mutable bool canApprove = false;
 };

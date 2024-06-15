@@ -6,7 +6,6 @@
 
 class Employee : public User {
 public:
-	Employee() = default;
 	Employee(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age);
 	/*void open();
 	void close();

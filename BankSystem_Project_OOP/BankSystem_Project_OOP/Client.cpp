@@ -8,11 +8,6 @@ using std::endl;
 Client::Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, const MyString& address)
     : User(fN, lN, egn, password, age), address(address) {}
 
-User* Client::clone() const
-{
-    return new Client(*this);
-}
-
 void Client::help() const
 {
     
@@ -23,9 +18,17 @@ void Client::addCheque(const Cheque& cheque)
     //pendingCheques.push(cheque);
 }
 
-void Client::addMessage(const MyString& message)
+void Client::showMessages() const
 {
-    messages.push(message);
+    for (size_t i = 0; i < messages.getSize(); i++)
+    {
+        std::cout << messages[i] << std::endl;
+    }
+}
+
+void Client::addMessage(const Message& message)
+{
+    messages.add(message);
 }
 
 bool Client::operator==(const Client& other) const
@@ -33,16 +36,11 @@ bool Client::operator==(const Client& other) const
     return egn == other.egn;
 }
 
-const MyString& Client::getFirstName() const
-{
-    return firstName;
-}
-
-const MyString& Client::getLastName() const
-{
-    return lastName;
-}
-
 const MyString& Client::getEGN() const {
     return egn;
+}
+
+User* Client::clone() const
+{
+    return new Client(*this);
 }

@@ -5,12 +5,16 @@ using std::cout;
 using std::endl;
 
 User::User(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age)
+	: firstName(fN), lastName(lN), egn(egn), password(password), age(age) { }
+
+const MyString& User::getFirstName() const
 {
-	firstName = fN;
-	lastName = lN;
-	this->egn = egn;
-	this->password = password;
-	this->age = age;
+	return firstName;
+}
+
+const MyString& User::getLastName() const
+{
+	return lastName;
 }
 
 void User::whoami() const

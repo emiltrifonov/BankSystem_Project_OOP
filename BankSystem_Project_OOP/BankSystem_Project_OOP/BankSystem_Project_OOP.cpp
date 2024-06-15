@@ -26,7 +26,7 @@ int main()
 	OpenTask ot3(&c3, &b);
 	ot1.approve();
 	ot2.approve();
-	b.viewAccounts();
+	b.viewAllAccounts();
 	CloseTask ct1(&c1, &b, 100);
 	CloseTask ct2(&c2, &b, 101);
 	ct1.disapprove("Shte ostanem bez akaunti i tva prosto nqma kak da stane...");
@@ -40,5 +40,5 @@ int main()
 	}
 	catch (std::logic_error& err) { cout << err.what() << endl << endl; }
 
-	e.viewTasks();*/
+	e.listTasks();*/
 }

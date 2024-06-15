@@ -18,5 +18,5 @@ public:
 private:
 	Client* cPtr;
 	Bank* bPtr;
-	int oldAccID;
+	const int oldAccID;
 };

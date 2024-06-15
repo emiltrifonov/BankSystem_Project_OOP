@@ -135,6 +135,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="CloseTask.cpp" />
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="Message.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="OpenTask.cpp" />
     <ClCompile Include="ThirdPartyEmployee.cpp" />
@@ -147,8 +148,10 @@
     <ClInclude Include="Cheque.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="CloseTask.h" />
+    <ClInclude Include="Collection.hpp" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="HeterogeneousContainer.hpp" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="OpenTask.h" />

@@ -1,40 +1,143 @@
-﻿  CloseTask.cpp
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(21,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  Account.cpp
+  Bank.cpp
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.cpp(21,16): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.cpp(22,22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.cpp(34,16): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.cpp(34,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  BankSystem_Project_OOP.cpp
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'BankSystem_Project_OOP.cpp')
+  
+  ChangeTask.cpp
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ChangeTask.cpp')
+  
+  Client.cpp
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Client.cpp(25,31): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  CloseTask.cpp
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'CloseTask.cpp')
   
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(23,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'CloseTask.cpp')
   
-  Employee.cpp
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Employee.cpp(22,9): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\HeterogeneousContainer.hpp(139,19): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'Employee.cpp')
-  D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\HeterogeneousContainer.hpp(139,19):
-  the template instantiation context (the oldest one first) is
-  	D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Employee.h(24,31):
-  	see reference to class template instantiation 'HeterogeneousContainer<Task>' being compiled
-  	D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\HeterogeneousContainer.hpp(137,1):
-  	while compiling class template member function 'void HeterogeneousContainer<Task>::add(T *)'
-          with
-          [
-              T=Task
-          ]
-  		D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Employee.cpp(13,11):
-  		see the first reference to 'HeterogeneousContainer<Task>::add' in 'Employee::addTask'
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'CloseTask.cpp')
   
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'CloseTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'CloseTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'CloseTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'CloseTask.cpp')
+  
+  Message.cpp
   OpenTask.cpp
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(21,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'OpenTask.cpp')
   
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(23,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OpenTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OpenTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OpenTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OpenTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OpenTask.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'OpenTask.cpp')
   
   ThirdPartyEmployee.cpp
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(21,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(27,13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'ThirdPartyEmployee.cpp')
   
-D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(23,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(29,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'ThirdPartyEmployee.cpp')
   
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(37,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ThirdPartyEmployee.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(38,14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ThirdPartyEmployee.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(40,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ThirdPartyEmployee.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(49,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ThirdPartyEmployee.cpp')
+  
+D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\BankSystem_Project_OOP\Bank.h(50,21): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'ThirdPartyEmployee.cpp')
+  
+  User.cpp
   Generating Code...
-LINK : fatal error LNK1168: cannot open D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\x64\Debug\BankSystem_Project_OOP.exe for writing
+  BankSystem_Project_OOP.vcxproj -> D:\VS Projects\BankSystem_Project_OOP\BankSystem_Project_OOP\x64\Debug\BankSystem_Project_OOP.exe

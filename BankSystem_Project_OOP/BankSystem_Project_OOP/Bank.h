@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include "MyString.h"
 #include "MyVector.hpp"
+#include "Collection.hpp"
 #include "Client.h"
 #include "Employee.h"
 #include "Account.h"
 
 class Bank {
 public:
-	Bank() = default;
 	Bank(const MyString& name);
 
 	/*friend class OpenTask;
@@ -58,8 +58,8 @@ public:
 
 private:
 	const MyString name;
-	MyVector<Employee> employees;
-	MyVector<Account> accounts;
+	Collection<Employee> employees;
+	Collection<Account> accounts;
 
 	//void addEmployee(const Employee& eRef);
 };

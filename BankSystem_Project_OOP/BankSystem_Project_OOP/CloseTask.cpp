@@ -13,7 +13,7 @@ void CloseTask::list() const
 {
 	//std::cout << "[" << index << "]" << 
 	std::cout << "Close - " << cPtr->getFirstName() << " " << cPtr->getLastName()
-		<< " wants to close an account." << std::endl;
+		<< " wants to close an account with ID " << oldAccID << "." << std::endl;
 }
 
 void CloseTask::view() const
@@ -33,12 +33,12 @@ void CloseTask::approve()
 void CloseTask::disapprove(const MyString& reason)
 {
 	// Tui cqloto generirane na message trqa e nqkude otdelno
-	MyString message = "Your CLOSE request was not approved. Reason: ";
-	message += reason;
+	MyString messageText = "Your CLOSE request was not approved. Reason: ";
+	messageText += reason;
 
 	//std::cout << message << std::endl;
 
-	cPtr->addMessage(message);
+	//cPtr->addMessage();
 }
 
 Task* CloseTask::clone() const

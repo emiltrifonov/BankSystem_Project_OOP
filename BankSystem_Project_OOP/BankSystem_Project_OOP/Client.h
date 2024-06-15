@@ -2,32 +2,32 @@
 #include "User.h"
 #include "MyString.h"
 #include "MyVector.hpp"
+#include "Collection.hpp"
+#include "Message.h"
 #include "Cheque.h"
 
 class Client : public User {
 public:
-	//Client() = default;
 	Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, 
 		const MyString& address);
-	User* clone() const override final;
 	void help() const override final;
 
 	void addCheque(const Cheque& cheque);
 	//void redeemCheque(const MyString& bankName, int id, const MyString& uniqueCode);
 
-	void addMessage(const MyString& message);
+	void showMessages() const;
+	void addMessage(const Message& message);
 
 	bool operator==(const Client& other) const;
 
-	const MyString& getFirstName() const;
-	const MyString& getLastName() const;
-
 	const MyString& getEGN() const;
 
+	User* clone() const override final;
+
 private:
-	MyString address;
-	MyVector<Cheque> pendingCheques;
-	MyVector<Cheque> redeemedCheques;
-	MyVector<MyString> messages; // Will create class Message with members MyString message and const Employee* ePtrProcessedBy
+	const MyString address;
+	Collection<Cheque> pendingCheques;
+	Collection<Cheque> redeemedCheques;
+	Collection<Message> messages;
 
 };
