@@ -28,6 +28,9 @@ void CloseTask::view() const
 void CloseTask::approve()
 {
 	bPtr->closeAccount(oldAccID);
+	MyString messageText = "Your CLOSE request was approved.";
+	//cPtr->addMessage({ messageText, processor });
+	cPtr->addMessage(messageText);
 }
 
 void CloseTask::disapprove(const MyString& reason)
@@ -38,7 +41,9 @@ void CloseTask::disapprove(const MyString& reason)
 
 	//std::cout << message << std::endl;
 
-	//cPtr->addMessage();
+	//cPtr->addMessage({messageText, processor});
+
+	cPtr->addMessage(messageText);
 }
 
 Task* CloseTask::clone() const

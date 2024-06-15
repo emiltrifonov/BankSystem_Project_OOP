@@ -14,5 +14,5 @@ public:
 	virtual ~Task() = default;
 
 protected:
-	//int index = 1;
+	int index;
 };

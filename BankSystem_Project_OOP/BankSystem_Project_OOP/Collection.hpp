@@ -41,10 +41,17 @@ private:
 };
 
 template<class T>
-Collection<T>::Collection() : data(new T* [capacity]()) {}
+Collection<T>::Collection()
+{
+	data = new T * [capacity] {nullptr};
+}
 
 template<class T>
-Collection<T>::Collection(st cap) : capacity(cap), data(new T* [capacity]()) {}
+Collection<T>::Collection(st cap)
+{
+	capacity = cap;
+	data = new T * [capacity] {nullptr};
+}
 
 template<class T>
 Collection<T>::Collection(const Collection<T>& other) {

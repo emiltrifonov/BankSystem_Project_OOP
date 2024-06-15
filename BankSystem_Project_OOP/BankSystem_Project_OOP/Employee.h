@@ -1,8 +1,8 @@
 #pragma once
-#include <stdio.h>
 #include "User.h"
-#include "Task.h"
+#include "MyString.h"
 #include "HeterogeneousContainer.hpp"
+#include "Task.h"
 
 class Employee : public User {
 public:
@@ -13,13 +13,15 @@ public:
 	void listTasks() const;*/
 	int getTaskCount() const;
 	void addTask(Task* t);
-
 	void listTasks() const;
+
+
 
 	User* clone() const override final;
 	void help() const override final {}
 
 private:
 	HeterogeneousContainer<Task> tasks;
-	int taskCount = 0;
+	int indexCounter = 1;
+
 };

@@ -27,11 +27,22 @@ void ChangeTask::approve()
 	else {
 		throw std::logic_error("Cannot proceed - please make sure the user is real by asking the bank!");
 	}
+
+	MyString messageText = "Your CHANGE request was approved.";
+
+	//cPtr->addMessage({ messageText, processor });
+
+	cPtr->addMessage(messageText);
 }
 
 void ChangeTask::disapprove(const MyString& reason)
 {
-	//cPtr->addMessage(reason);
+	MyString messageText = "Your CHANGE request was not approved. Reason: ";
+	messageText += reason;
+
+	//cPtr->addMessage({ messageText, processor });
+
+	cPtr->addMessage(messageText);
 }
 
 void ChangeTask::validate() const

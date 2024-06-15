@@ -5,13 +5,12 @@ Employee::Employee(const MyString& fN, const MyString& lN, const MyString& egn, 
 	: User(fN, lN, egn, password, age) {}
 
 int Employee::getTaskCount() const {
-	return taskCount;
+	return tasks.getSize();
 }
 
 void Employee::addTask(Task* t)
 {
 	tasks.add(t);
-	taskCount++;
 }
 
 void Employee::listTasks() const

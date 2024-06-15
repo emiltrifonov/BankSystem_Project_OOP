@@ -16,7 +16,10 @@ public:
 	//void redeemCheque(const MyString& bankName, int id, const MyString& uniqueCode);
 
 	void showMessages() const;
-	void addMessage(const Message& message);
+	//void addMessage(const Message& message);
+	void addMessage(const MyString& message) {
+		messages.push(message);
+	}
 
 	bool operator==(const Client& other) const;
 
@@ -28,6 +31,6 @@ private:
 	const MyString address;
 	Collection<Cheque> pendingCheques;
 	Collection<Cheque> redeemedCheques;
-	Collection<Message> messages;
-
+	//Collection<Message> messages;
+	MyVector<MyString> messages; // Temporary
 };

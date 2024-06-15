@@ -4,7 +4,7 @@
 
 class Message {
 public:
-	Message(MyString& text, Employee* processor);
+	Message(MyString& text, const Employee* processor);
 
 	friend std::ostream& operator<<(std::ostream& os, const Message& message);
 

@@ -20,6 +20,9 @@ void OpenTask::view() const
 void OpenTask::approve()
 {
 	bPtr->openAccount(cPtr);
+	MyString messageText = "Your OPEN request was approved.";
+	//cPtr->addMessage({ messageText, processor });
+	cPtr->addMessage(messageText);
 }
 
 void OpenTask::disapprove(const MyString& reason)
@@ -28,7 +31,8 @@ void OpenTask::disapprove(const MyString& reason)
 	MyString messageText = "Your OPEN request was not approved. Reason: ";
 	messageText += reason;
 
-	//cPtr->addMessage();
+	//cPtr->addMessage({ messageText, processor });
+	cPtr->addMessage(messageText);
 }
 
 Task* OpenTask::clone() const

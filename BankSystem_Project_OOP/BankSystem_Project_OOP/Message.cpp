@@ -1,7 +1,7 @@
-#include<iostream>
+#include <iostream>
 #include "Message.h"
 
-Message::Message(MyString& text, Employee* processor) : text(text), processor(processor), index(indexCounter++) { }
+Message::Message(MyString& text, const Employee* processor) : text(text), processor(processor), index(indexCounter++) { }
 
 std::ostream& operator<<(std::ostream& os, const Message& message)
 {

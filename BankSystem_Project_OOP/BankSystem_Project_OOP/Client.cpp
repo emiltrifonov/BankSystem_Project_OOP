@@ -22,14 +22,14 @@ void Client::showMessages() const
 {
     for (size_t i = 0; i < messages.getSize(); i++)
     {
-        std::cout << messages[i] << std::endl;
+        std::cout << "[" << (i + 1) << "] - " << messages[i] << std::endl;
     }
 }
 
-void Client::addMessage(const Message& message)
-{
-    messages.add(message);
-}
+//void Client::addMessage(const Message& message)
+//{
+//    messages.add(message);
+//}
 
 bool Client::operator==(const Client& other) const
 {

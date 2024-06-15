@@ -1,5 +1,6 @@
 #pragma once
 #include "Task.h"
+#include "Employee.h"
 #include "Client.h"
 #include "Bank.h"
 #include "MyString.h"
