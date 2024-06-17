@@ -17,12 +17,18 @@ public:
 
 	const MyString& getName() const;
 
+	Employee* getLeastBusyEmployee();
+
 	void openAccount(const Client* cPtr);
 	void closeAccount(int ID);
 	bool isAccountValid(int ID, const Client* cPtr) const;
 
+	//
+	friend class ListAccountsCommand;
+	friend class RedeemCommand;
+
 	void viewAllAccounts() const { // For testing
-		for (size_t i = 0; i < accounts.getSize(); i++)
+		for (int i = 0; i < accounts.getSize(); i++)
 		{
 			accounts[i].getHolder()->whoami();
 			std::cout << "Bank: "<< name << std::endl;
@@ -32,7 +38,7 @@ public:
 	}
 
 	void viewAccount(int ID) const {
-		for (size_t i = 0; i < accounts.getSize(); i++)
+		for (int i = 0; i < accounts.getSize(); i++)
 		{
 			if (accounts[i].getID() == ID) {
 				accounts[i].getHolder()->whoami();
@@ -44,7 +50,7 @@ public:
 	}
 
 	const Account& getAccount(int ID) const {
-		for (size_t i = 0; i < accounts.getSize(); i++)
+		for (int i = 0; i < accounts.getSize(); i++)
 		{
 			if (accounts[i].getID() == ID) {
 				return accounts[i];
@@ -53,6 +59,19 @@ public:
 
 		throw std::logic_error("Account doesn't exist");
 	}
+
+	Account& getAccount(int ID) {
+		for (int i = 0; i < accounts.getSize(); i++)
+		{
+			if (accounts[i].getID() == ID) {
+				return accounts[i];
+			}
+		}
+
+		throw std::logic_error("Account doesn't exist");
+	}
+
+	bool existsAccount(int accID) const;
 
 	void addEmployee(const Employee& eRef);
 

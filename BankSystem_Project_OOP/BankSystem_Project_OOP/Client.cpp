@@ -8,22 +8,14 @@ using std::endl;
 Client::Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, const MyString& address)
     : User(fN, lN, egn, password, age), address(address) {}
 
-void Client::help() const
-{
-    
-}
-
 void Client::addCheque(const Cheque& cheque)
 {
-    //pendingCheques.push(cheque);
+    pendingCheques.add(cheque);
 }
 
-void Client::showMessages() const
+bool Client::isClient() const
 {
-    for (size_t i = 0; i < messages.getSize(); i++)
-    {
-        std::cout << "[" << (i + 1) << "] - " << messages[i] << std::endl;
-    }
+    return true;
 }
 
 //void Client::addMessage(const Message& message)
@@ -34,10 +26,6 @@ void Client::showMessages() const
 bool Client::operator==(const Client& other) const
 {
     return egn == other.egn;
-}
-
-const MyString& Client::getEGN() const {
-    return egn;
 }
 
 User* Client::clone() const

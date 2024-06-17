@@ -10,20 +10,23 @@ class Client : public User {
 public:
 	Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, 
 		const MyString& address);
-	void help() const override final;
+	void help() const override final { }
 
 	void addCheque(const Cheque& cheque);
-	//void redeemCheque(const MyString& bankName, int id, const MyString& uniqueCode);
+	//void redeemCheque(const MyString& bankName, int accID, const MyString& verificationCode);
 
-	void showMessages() const;
+	bool isClient() const override final;
+
+	// Commands
+	friend class MessagesCommand;
+	friend class RedeemCommand;
+
 	//void addMessage(const Message& message);
 	void addMessage(const MyString& message) {
 		messages.push(message);
 	}
 
 	bool operator==(const Client& other) const;
-
-	const MyString& getEGN() const;
 
 	User* clone() const override final;
 

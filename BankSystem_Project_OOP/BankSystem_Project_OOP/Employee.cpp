@@ -4,22 +4,19 @@
 Employee::Employee(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age) 
 	: User(fN, lN, egn, password, age) {}
 
-int Employee::getTaskCount() const {
-	return tasks.getSize();
-}
-
 void Employee::addTask(Task* t)
 {
 	tasks.add(t);
 }
 
-void Employee::listTasks() const
+int Employee::getTaskCount() const
 {
-	for (size_t i = 0; i < tasks.getSize(); i++)
-	{
-		std::cout << "[" << i + 1 << "] ";
-		tasks[i]->list();
-	}
+	return tasks.getSize();
+}
+
+bool Employee::isEmployee() const
+{
+	return true;
 }
 
 User* Employee::clone() const

@@ -9,6 +9,8 @@ public:
 	virtual void disapprove(const MyString& reason) = 0;
 	//virtual void execute() const = 0;
 
+	virtual bool isChangeTask() const;
+
 	virtual Task* clone() const = 0;
 
 	virtual ~Task() = default;

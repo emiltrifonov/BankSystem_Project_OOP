@@ -7,6 +7,9 @@ public:
 	Account(const Client* ptr, int id);
 	void addBalance(double toAdd);
 
+	//
+	//friend class RedeemCommand;
+
 	int getID() const;
 	double getBalance() const;
 	const Client* getHolder() const;

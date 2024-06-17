@@ -1,11 +1,11 @@
 #include <iostream>
 #include "Cheque.h"
 
-Cheque::Cheque(const MyString& code, double sum) : uniqueCode(code), sum(sum) { }
+Cheque::Cheque(const VerificationCode& code, double sum) : verificationCode(code), sum(sum) { }
 
 const MyString& Cheque::getCode() const
 {
-	return uniqueCode;
+	return verificationCode.getCode();
 }
 
 double Cheque::getSum() const

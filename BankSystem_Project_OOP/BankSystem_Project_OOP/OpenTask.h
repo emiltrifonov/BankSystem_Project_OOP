@@ -10,7 +10,7 @@ public:
 	OpenTask(Client* cPtr, Bank* bPtr);
 
 	void list() const override final;
-	void view() const;
+	void view() const override final;
 	void approve() override final;
 	void disapprove(const MyString& reason) override final;
 

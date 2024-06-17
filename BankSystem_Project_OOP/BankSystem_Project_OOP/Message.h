@@ -11,6 +11,4 @@ public:
 private:
 	const MyString text;
 	const Employee* processor;
-	const int index;
-	static int indexCounter;
 };

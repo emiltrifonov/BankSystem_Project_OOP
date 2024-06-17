@@ -14,6 +14,8 @@ public:
 	void approve() override final;
 	void disapprove(const MyString& reason) override final;
 
+	bool isChangeTask() const override final;
+
 	void validate() const;
 
 	Task* clone() const override final;

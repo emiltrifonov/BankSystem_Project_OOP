@@ -18,6 +18,7 @@ public:
 	st getSize() const;
 
 	const T* operator[](int ind) const;
+	T* operator[](int ind);
 
 	~HeterogeneousContainer() noexcept;
 
@@ -150,6 +151,16 @@ inline st HeterogeneousContainer<T>::getSize() const
 
 template<class T>
 inline const T* HeterogeneousContainer<T>::operator[](int ind) const
+{
+	if (ind < 0 || ind >= size) {
+		throw std::out_of_range("Index out of range!");
+	}
+
+	return data[ind];
+}
+
+template<class T>
+inline T* HeterogeneousContainer<T>::operator[](int ind)
 {
 	if (ind < 0 || ind >= size) {
 		throw std::out_of_range("Index out of range!");

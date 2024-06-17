@@ -6,15 +6,15 @@ OpenTask::OpenTask(Client* cPtr, Bank* bPtr) : cPtr(cPtr), bPtr(bPtr) { }
 
 void OpenTask::list() const
 {
-	//std::cout << "[" << index << "]" <<
 	std::cout << "Open - " << cPtr->getFirstName() << " " << cPtr->getLastName()
-		<< " wants to create an account." << std::endl;
+		<< " wants join " << bPtr->getName() << "." << std::endl;
 }
 
 void OpenTask::view() const
 {
 	std::cout << "Open request from:" << std::endl;
 	cPtr->whoami();
+	std::cout << "Bank: " << bPtr->getName() << std::endl;
 }
 
 void OpenTask::approve()

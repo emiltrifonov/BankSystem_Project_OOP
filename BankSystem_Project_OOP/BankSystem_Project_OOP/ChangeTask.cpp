@@ -45,6 +45,11 @@ void ChangeTask::disapprove(const MyString& reason)
 	cPtr->addMessage(messageText);
 }
 
+bool ChangeTask::isChangeTask() const
+{
+	return true;
+}
+
 void ChangeTask::validate() const
 {
 	oldBankPtr->viewAccount(oldAccID);

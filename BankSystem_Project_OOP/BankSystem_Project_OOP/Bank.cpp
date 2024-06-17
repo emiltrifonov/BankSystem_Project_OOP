@@ -1,12 +1,34 @@
 #include <iostream>
 #include "Bank.h"
-#include "UniqueID.h"
 
 Bank::Bank(const MyString& name) : name(name) { }
 
 const MyString& Bank::getName() const
 {
 	return name;
+}
+
+Employee* Bank::getLeastBusyEmployee()
+{
+	if (employees.getSize() == 0) {
+		throw std::logic_error("No employess available");
+	}
+
+	int currInd = -1;
+	int minTasks = INT_MAX;
+	for (int i = 0; i < employees.getSize(); i++)
+	{
+		if (employees[i].getTaskCount() < minTasks) {
+			currInd = i;
+		}
+	}
+
+	return &employees[currInd];
+}
+
+const static unsigned getID() {
+	static unsigned ID = 100;
+	return ID++;
 }
 
 void Bank::openAccount(const Client* cPtr)
@@ -16,7 +38,7 @@ void Bank::openAccount(const Client* cPtr)
 
 void Bank::closeAccount(int ID)
 {
-	for (size_t i = 0; i < accounts.getSize(); i++)
+	for (int i = 0; i < accounts.getSize(); i++)
 	{
 		if (accounts[i].getID() == ID) {
 			accounts.removeAt(i);
@@ -29,9 +51,21 @@ void Bank::closeAccount(int ID)
 
 bool Bank::isAccountValid(int ID, const Client* cPtr) const
 {
-	for (size_t i = 0; i < accounts.getSize(); i++)
+	for (int i = 0; i < accounts.getSize(); i++)
 	{
 		if (accounts[i].getID() == ID && *(accounts[i].getHolder()) == *(cPtr)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Bank::existsAccount(int accID) const
+{
+	for (int i = 0; i < accounts.getSize(); i++)
+	{
+		if (accounts[i].getID() == accID) {
 			return true;
 		}
 	}
