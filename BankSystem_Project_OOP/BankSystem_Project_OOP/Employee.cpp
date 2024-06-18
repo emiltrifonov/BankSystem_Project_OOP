@@ -23,3 +23,18 @@ User* Employee::clone() const
 {
 	return new Employee(*this);
 }
+
+void Employee::help() const
+{
+	std::cout << "tasks - shows list of assigned tasks" << std::endl;
+
+	std::cout << "view [task_id] - shows details about chosen task" << std::endl;
+
+	std::cout << "approve [task_id] - approves chosen request" << std::endl;
+
+	std::cout << "disapprove [task_id] - denies chosen request" << std::endl;
+
+	std::cout << "validate [task_id] - validates data given through change task" << std::endl;
+
+	std::cout << "exit - logs out of the system" << std::endl;
+}

@@ -9,7 +9,7 @@ public:
 
 	bool isThirdPartyEmployee() const override final;
 
-	void help() const override final { }
+	void help() const override final;
 	User* clone() const override final;
 
 private:

@@ -22,7 +22,7 @@ public:
 	bool isEmployee() const override final;
 
 	User* clone() const override final;
-	void help() const override final {}
+	void help() const override final;
 
 private:
 	HeterogeneousContainer<Task> tasks;

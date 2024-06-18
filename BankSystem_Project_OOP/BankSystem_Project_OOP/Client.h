@@ -10,7 +10,7 @@ class Client : public User {
 public:
 	Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, 
 		const MyString& address);
-	void help() const override final { }
+	void help() const override final;
 
 	void addCheque(const Cheque* cheque);
 	//void redeemCheque(const MyString& bankName, int accID, const MyString& verificationCode);
@@ -27,6 +27,8 @@ public:
 	}
 
 	bool operator==(const Client& other) const;
+
+	void whoami() const;
 
 	User* clone() const override final;
 

@@ -16,7 +16,7 @@ private:
 	void resize(st);
 
 public:
-	MyString() = default;
+	MyString();
 	MyString(st);
 	MyString(const char*);
 	MyString(const MyString&); // C.C.

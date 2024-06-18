@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include <limits>
-#include "Factory.h"
+#include "UserFactory.h"
 #include "User.h"
 #include "Bank.h"
 #include "Client.h"
@@ -124,7 +124,7 @@ static User* handleThirdPartyEmployee() {
     return new ThirdPartyEmployee(firstName, lastName, egn, password, age);
 }
 
-User* factory()
+User* userFactory()
 {
     getName();
     getEgn();

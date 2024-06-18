@@ -70,5 +70,14 @@ const static void test() {
 
 int main()
 {
-	test();
+	//test();
+
+	try {
+		MyString str;
+		cin >> str;
+
+		cout << endl << str << endl;
+	}
+	catch (std::exception& e) { cout << e.what() << endl; }
+	catch (...) { }
 }

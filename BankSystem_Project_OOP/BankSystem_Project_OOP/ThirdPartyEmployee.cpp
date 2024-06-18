@@ -9,6 +9,12 @@ bool ThirdPartyEmployee::isThirdPartyEmployee() const
 	return true;
 }
 
+void ThirdPartyEmployee::help() const
+{
+	std::cout << "send_cheque [sum] [verification_code] [egn] - sends check to user with matching egn" << std::endl;
+	std::cout << "exit - logs out of the system" << std::endl;
+}
+
 User* ThirdPartyEmployee::clone() const
 {
 	return new ThirdPartyEmployee(*this);

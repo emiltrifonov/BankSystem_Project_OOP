@@ -18,6 +18,9 @@ public:
 	friend class CreateBankCommand;
 	friend class LoginCommand;
 
+	// User commands
+	friend class HelpCommand;
+
 	// Third-Party employee commands
 	friend class SendChequeCommand;
 

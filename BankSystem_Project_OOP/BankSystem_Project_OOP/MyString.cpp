@@ -3,6 +3,8 @@
 #include "MyString.h"
 #pragma warning (disable:4996)
 
+MyString::MyString() : MyString("") { }
+
 MyString::MyString(st cap)
 {
 	text = new char[cap + 1];

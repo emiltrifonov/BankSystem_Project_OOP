@@ -10,7 +10,7 @@ CreateBankCommand::CreateBankCommand(const MyString& bankName) : bankName(bankNa
 
 	for (int i = 0; i < banksCount; i++)
 	{
-		if (System::getInstance().existsBank(bankName)) {
+		if (System::getInstance().getBank(bankName)) {
 			throw std::logic_error("Bank already exists");
 		}
 	}
