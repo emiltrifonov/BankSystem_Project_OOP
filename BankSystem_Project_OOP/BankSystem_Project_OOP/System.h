@@ -3,7 +3,6 @@
 #include "Task.h"
 #include "Bank.h"
 #include "HeterogeneousContainer.hpp"
-#include "Collection.hpp"
 #include "MyString.h"
 
 // Singleton
@@ -11,9 +10,13 @@ class System {
 public:
 	static System& getInstance();
 
+	System(const System& other) = delete;
+	System& operator=(const System& other) = delete;
+
 	// System commands
 	friend class ExitCommand;
 	friend class CreateBankCommand;
+	friend class LoginCommand;
 
 	// Third-Party employee commands
 	friend class SendChequeCommand;
@@ -50,6 +53,9 @@ public:
 		}
 	}
 
+	Bank* getBank(const MyString& name);
+	User* getUser(const MyString& egn);
+
 private:
 	HeterogeneousContainer<User> users;
 	Collection<Bank> banks;
@@ -57,9 +63,4 @@ private:
 	User* currentUser = nullptr; // Managed by Container of users
 
 	System() = default;
-
-	Bank* getBank(const MyString& name);
-
-	bool existsUser(const MyString& egn) const;
-	bool existsBank(const MyString& name) const;
 };

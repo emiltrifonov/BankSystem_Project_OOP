@@ -19,26 +19,14 @@ Bank* System::getBank(const MyString& name)
 	return nullptr;
 }
 
-bool System::existsUser(const MyString& egn) const
+User* System::getUser(const MyString& egn)
 {
 	for (int i = 0; i < users.getSize(); i++)
 	{
 		if (users[i]->getEGN() == egn) {
-			return true;
+			return users[i];
 		}
 	}
 
-	return false;
-}
-
-bool System::existsBank(const MyString& name) const
-{
-	for (int i = 0; i < banks.getSize(); i++)
-	{
-		if (banks[i].getName() == name) {
-			return true;
-		}
-	}
-
-	return false;
+	return nullptr;
 }

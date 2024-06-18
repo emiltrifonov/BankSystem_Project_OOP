@@ -34,7 +34,7 @@ SendChequeCommand::SendChequeCommand(double sum, const MyString& verificationCod
 
 void SendChequeCommand::execute()
 {
-	recipient->addCheque(*new Cheque(code, sum));
+	recipient->addCheque(new Cheque(code, sum));
 }
 
 bool SendChequeCommand::isCurrentUserThirdPartyEmployee() const

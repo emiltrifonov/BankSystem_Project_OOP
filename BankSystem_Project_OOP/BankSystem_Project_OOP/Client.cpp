@@ -8,9 +8,9 @@ using std::endl;
 Client::Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, const MyString& address)
     : User(fN, lN, egn, password, age), address(address) {}
 
-void Client::addCheque(const Cheque& cheque)
+void Client::addCheque(const Cheque* cheque)
 {
-    pendingCheques.add(cheque);
+    pendingCheques.add(*cheque);
 }
 
 bool Client::isClient() const

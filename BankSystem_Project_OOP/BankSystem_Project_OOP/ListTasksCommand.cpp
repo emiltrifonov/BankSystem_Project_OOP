@@ -5,11 +5,13 @@
 
 ListTasksCommand::ListTasksCommand(const EGN& egn)
 {
-	int usersCount = System::getInstance().users.getSize();
+	size_t usersCount = System::getInstance().users.getSize();
 
-	for (int i = 0; i < usersCount; i++)
+	User* current = nullptr;
+
+	for (size_t i = 0; i < usersCount; i++)
 	{
-		User* current = System::getInstance().users[i];
+		current = System::getInstance().users[i];
 		if (current->getEGN() == egn) {
 			if (current->isEmployee()) {
 				employee = static_cast<Employee*>(current);

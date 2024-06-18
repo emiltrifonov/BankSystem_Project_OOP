@@ -33,7 +33,7 @@ const static unsigned getID() {
 
 void Bank::openAccount(const Client* cPtr)
 {
-	accounts.add(Account(cPtr, getID()));
+	accounts.add(*new Account(cPtr, getID()));
 }
 
 void Bank::closeAccount(int ID)

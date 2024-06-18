@@ -14,5 +14,4 @@ public:
 
 private:
 	const static size_t maxVerificationCodeLen = 3;
-
 };

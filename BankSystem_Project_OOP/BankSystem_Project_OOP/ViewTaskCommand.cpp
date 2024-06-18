@@ -1,6 +1,8 @@
 #include <iostream>
 #include <exception>
 #include "ViewTaskCommand.h"
+#include "Employee.h"
+#include "System.h"
 
 ViewTaskCommand::ViewTaskCommand(int taskIndex) : taskIndex(taskIndex) 
 {

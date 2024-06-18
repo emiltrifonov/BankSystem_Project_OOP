@@ -12,7 +12,7 @@ public:
 		const MyString& address);
 	void help() const override final { }
 
-	void addCheque(const Cheque& cheque);
+	void addCheque(const Cheque* cheque);
 	//void redeemCheque(const MyString& bankName, int accID, const MyString& verificationCode);
 
 	bool isClient() const override final;

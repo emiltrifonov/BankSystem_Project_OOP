@@ -18,5 +18,5 @@ CreateBankCommand::CreateBankCommand(const MyString& bankName) : bankName(bankNa
 
 void CreateBankCommand::execute()
 {
-	System::getInstance().banks.add(*new Bank(bankName));
+	System::getInstance().banks.add(bankName);
 }

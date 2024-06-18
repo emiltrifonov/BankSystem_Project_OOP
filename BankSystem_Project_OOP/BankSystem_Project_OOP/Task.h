@@ -7,7 +7,6 @@ public:
 	virtual void view() const = 0;
 	virtual void approve() = 0;
 	virtual void disapprove(const MyString& reason) = 0;
-	//virtual void execute() const = 0;
 
 	virtual bool isChangeTask() const;
 
