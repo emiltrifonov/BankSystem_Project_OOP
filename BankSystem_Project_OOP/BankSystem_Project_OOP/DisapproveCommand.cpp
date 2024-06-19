@@ -5,10 +5,6 @@
 
 DisapproveCommand::DisapproveCommand(int taskIndex, const MyString& reason) : reason(reason)
 {
-	if (!isCurrentUserEmployee()) {
-		invalidCmd();
-	}
-
 	validateIndex(taskIndex);
 }
 

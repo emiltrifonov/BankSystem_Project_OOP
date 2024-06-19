@@ -4,8 +4,7 @@
 
 class SignupCommand : public SystemCommand { // To do after User factory is created
 public:
-	void execute() override final { }
+	SignupCommand();
 
-private:
-
+	void execute() override final;
 };

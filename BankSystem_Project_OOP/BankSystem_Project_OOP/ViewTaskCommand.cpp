@@ -4,12 +4,8 @@
 #include "Employee.h"
 #include "System.h"
 
-ViewTaskCommand::ViewTaskCommand(int taskIndex) : taskIndex(taskIndex) 
+ViewTaskCommand::ViewTaskCommand(int taskIndex) : taskIndex(taskIndex - 1) 
 {
-	if (!System::getInstance().currentUser->isEmployee()) {
-		invalidCmd();
-	}
-
 	validateIndex(taskIndex);
 }
 

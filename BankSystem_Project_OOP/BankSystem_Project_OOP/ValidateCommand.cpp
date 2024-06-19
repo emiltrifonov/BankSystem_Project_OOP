@@ -2,15 +2,21 @@
 #include <exception>
 #include "ValidateCommand.h"
 #include "System.h"
+#include "Task.h"
+#include "ChangeTask.h"
 
-ValidateCommand::ValidateCommand(int taskIndex, Task* task)
+ValidateCommand::ValidateCommand(int taskIndex)
 {
-	if (!isCurrentUserEmployee() || !task || !task->isChangeTask()) {
+	validateIndex(taskIndex);;
+
+	Task* t = static_cast<Employee*>(System::getInstance().currentUser)->tasks[taskIndex];
+
+	if (t->isChangeTask()) {
+		task = static_cast<ChangeTask*>(t);
+	}
+	else {
 		invalidCmd();
 	}
-
-	validateIndex(taskIndex);
-	this->task = static_cast<ChangeTask*>(task);
 }
 
 void ValidateCommand::execute()

@@ -3,37 +3,13 @@
 #include "ListTasksCommand.h"
 #include "System.h"
 
-ListTasksCommand::ListTasksCommand(const EGN& egn)
-{
-	size_t usersCount = System::getInstance().users.getSize();
-
-	User* current = nullptr;
-
-	for (size_t i = 0; i < usersCount; i++)
-	{
-		current = System::getInstance().users[i];
-		if (current->getEGN() == egn) {
-			if (current->isEmployee()) {
-				employee = static_cast<Employee*>(current);
-				return;
-			}
-			throw std::logic_error("Invalid employee");
-		}
-	}
-
-	throw std::logic_error("Invalid employee");
-}
-
-ListTasksCommand::ListTasksCommand(Employee& employee)
-{
-	this->employee = &employee;
-}
-
 void ListTasksCommand::execute()
 {
-	for (size_t i = 0; i < employee->tasks.getSize(); i++)
+	Employee* current = static_cast<Employee*>(System::getInstance().currentUser);
+
+	for (size_t i = 0; i < current->tasks.getSize(); i++)
 	{
 		std::cout << "[" << i + 1 << "] ";
-		employee->tasks[i]->list();
+		current->tasks[i]->list();
 	}
 }

@@ -17,6 +17,7 @@ public:
 	friend class ExitCommand;
 	friend class CreateBankCommand;
 	friend class LoginCommand;
+	friend class SignupCommand;
 
 	// User commands
 	friend class HelpCommand;

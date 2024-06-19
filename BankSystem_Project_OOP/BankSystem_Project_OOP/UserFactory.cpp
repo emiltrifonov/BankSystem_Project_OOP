@@ -19,7 +19,7 @@ static int role;
 static MyString password;
 
 static bool isLatinLetter(char ch) {
-    return ch >= 'A' && ch <= 'Z' && ch >= 'a' && ch <= 'z';
+    return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
 }
 
 static void validateName(const MyString& name) {

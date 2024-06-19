@@ -5,10 +5,6 @@
 
 ApproveCommand::ApproveCommand(int taskIndex)
 {
-	if (!isCurrentUserEmployee()) {
-		invalidCmd();
-	}
-
 	validateIndex(taskIndex);
 }
 
