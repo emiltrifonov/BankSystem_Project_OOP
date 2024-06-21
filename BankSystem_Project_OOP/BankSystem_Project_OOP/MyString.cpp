@@ -93,6 +93,11 @@ void MyString::free() {
 	size = capacity = 0;
 }
 
+bool MyString::isEmpty() const
+{
+	return size == 0;
+}
+
 void MyString::resize()
 {
 	resize(capacity * 2);

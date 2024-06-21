@@ -8,7 +8,13 @@
 // Utility
 static void validateCommand(std::stringstream& ss) {
 	if (!ss.eof()) {
-		throw std::logic_error("Invalid command");
+		throw std::logic_error("Command message contains unnecessary information");
+	}
+}
+
+static void validateString(const MyString& str) {
+	if (str.isEmpty()) {
+		throw std::logic_error("Empty string not allowed");
 	}
 }
 
@@ -18,7 +24,7 @@ static int readInteger(std::istream& is) {
 	is >> result;
 
 	if (is.fail()) {
-		throw std::logic_error("Invalid command");
+		throw std::logic_error("Invalid integer");
 	}
 
 	return result;
@@ -30,7 +36,7 @@ static double readDouble(std::istream& is) {
 	is >> result;
 
 	if (is.fail()) {
-		throw std::logic_error("Invalid command");
+		throw std::logic_error("Invalid double");
 	}
 
 	return result;
@@ -46,19 +52,16 @@ static Command* handleExit(std::stringstream& ss) {
 static Command* handleCreateBank(std::stringstream& ss) {
 	MyString bankName;
 	ss >> bankName;
-
+	validateString(bankName);
 	validateCommand(ss);
 
 	return new CreateBankCommand(bankName);
 }
 
 static Command* handleLogin(std::stringstream& ss) {
-	MyString egn, password;
-	ss >> egn >> password;
-
 	validateCommand(ss);
 
-	return new LoginCommand(egn, password);
+	return new LoginCommand();
 }
 
 static Command* handleSignup(std::stringstream& ss) {
@@ -78,6 +81,7 @@ static Command* handleHelp(std::stringstream& ss) {
 static Command* handleCheckAvl(std::stringstream& ss) {
 	MyString bankName;
 	ss >> bankName;
+
 	int accID;
 	accID = readInteger(ss);
 
@@ -111,6 +115,7 @@ static Command* handleChange(std::stringstream& ss) {
 	ss >> oldBankName;
 	MyString newBankName;
 	ss >> newBankName;
+
 	int accID;
 	accID = readInteger(ss);
 
@@ -208,18 +213,25 @@ static Command* handleSendCheque(std::stringstream& ss) {
 
 Command* CommandFactory()
 {
+	static bool skip = false; // Tova e skandalno ama inache ne znam kak da go opravq
 	const int BUFF_SIZE = 1024;
 	char buffer[BUFF_SIZE];
+	if (!skip) {
+		std::cout << ">";
+	}
 	std::cin.getline(buffer, BUFF_SIZE);
 	std::stringstream ss(buffer);
-
-	/*char command[BUFF_SIZE];
-	ss >> command;
-	MyString commandStr(command);*/
 
 	MyString commandStr;
 	ss >> commandStr;
 
+	if (commandStr == "") {
+		skip = true;
+		throw std::exception("");
+	}
+	else {
+		skip = false;
+	}
 	if (commandStr == "exit") {
 		return handleExit(ss);
 	}

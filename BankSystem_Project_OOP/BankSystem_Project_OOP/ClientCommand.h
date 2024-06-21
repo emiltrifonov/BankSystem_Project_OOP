@@ -1,8 +1,8 @@
 #pragma once
-#include "Command.h"
+#include "UserCommand.h"
 #include "System.h"
 
-class ClientCommand : public Command {
+class ClientCommand : public UserCommand {
 public:
 	ClientCommand();
 

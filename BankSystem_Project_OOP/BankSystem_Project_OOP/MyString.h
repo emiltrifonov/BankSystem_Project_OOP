@@ -23,6 +23,7 @@ public:
 	MyString(MyString&&) noexcept; // M.C.
 
 	st getLength() const;
+	bool isEmpty() const;
 
 	const char* c_str() const;
 

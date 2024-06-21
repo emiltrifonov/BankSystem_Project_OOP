@@ -20,6 +20,7 @@ public:
 	friend class SignupCommand;
 
 	// User commands
+	friend class UserCommand;
 	friend class HelpCommand;
 
 	// Third-Party employee commands
@@ -59,6 +60,8 @@ public:
 
 	Bank* getBank(const MyString& name);
 	User* getUser(const MyString& egn);
+
+	
 
 private:
 	HeterogeneousContainer<User> users;

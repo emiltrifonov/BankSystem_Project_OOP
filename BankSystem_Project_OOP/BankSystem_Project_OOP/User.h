@@ -18,6 +18,7 @@ public:
 	const MyString& getFirstName() const;
 	const MyString& getLastName() const;
 	const EGN& getEGN() const;
+	const MyString& getPassword() const;
 
 	virtual ~User() = default;
 

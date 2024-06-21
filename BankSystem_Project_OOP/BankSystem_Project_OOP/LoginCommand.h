@@ -3,14 +3,9 @@
 #include "SystemCommand.h"
 #include "Mystring.h"
 
-class LoginCommand : public SystemCommand { // To do after User factory is created
+class LoginCommand : public SystemCommand {
 public:
-	LoginCommand(const MyString& egn, const MyString& password);
+	LoginCommand();
 
 	void execute() override final;
-
-private:
-	User* user = nullptr;
-	const MyString& password;
-
 };

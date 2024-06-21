@@ -19,4 +19,5 @@ CreateBankCommand::CreateBankCommand(const MyString& bankName) : bankName(bankNa
 void CreateBankCommand::execute()
 {
 	System::getInstance().banks.add(bankName);
+	std::cout << "Bank created successfully" << std::endl << std::endl;
 }

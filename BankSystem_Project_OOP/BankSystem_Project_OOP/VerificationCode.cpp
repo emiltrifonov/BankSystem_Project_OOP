@@ -12,7 +12,7 @@ const static bool isSmallLatin(char ch) {
 }
 
 const static bool isLatinLetter(char ch) {
-	return isCapitalLatin(ch) && isSmallLatin(ch);
+	return isCapitalLatin(ch) || isSmallLatin(ch);
 }
 
 const static bool isDigit(char ch) {
@@ -20,7 +20,7 @@ const static bool isDigit(char ch) {
 }
 
 const static bool isValid(char ch) {
-	return isLatinLetter(ch) && isDigit(ch);
+	return isLatinLetter(ch) || isDigit(ch);
 }
 
 VerificationCode::VerificationCode(const MyString& code) : code(code)
@@ -30,11 +30,11 @@ VerificationCode::VerificationCode(const MyString& code) : code(code)
 
 void VerificationCode::validate() const
 {
-	if (code.getLength() > codeLen) {
+	if (code.getLength() != codeLen) {
 		throw std::runtime_error("Invalid verification code");
 	}
 
-	for (int i = 0; i < code.getLength(); i++)
+	for (int i = 0; i < codeLen; i++)
 	{
 		if (!isValid(code[i])) {
 			throw std::runtime_error("Invalid verification code");

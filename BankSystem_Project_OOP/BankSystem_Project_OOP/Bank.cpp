@@ -20,6 +20,7 @@ Employee* Bank::getLeastBusyEmployee()
 	{
 		if (employees[i].getTaskCount() < minTasks) {
 			currInd = i;
+			minTasks = employees[i].getTaskCount();
 		}
 	}
 
@@ -46,7 +47,7 @@ void Bank::closeAccount(int ID)
 		}
 	}
 
-	//throw std::logic_error("Account doesn't exist"); Should probably not throw this
+	//throw std::logic_error("Account doesn't exist"); Probably shouldn't throw this
 }
 
 bool Bank::isAccountValid(int ID, const Client* cPtr) const

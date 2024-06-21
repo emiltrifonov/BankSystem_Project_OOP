@@ -15,6 +15,8 @@ OpenCommand::OpenCommand(const MyString& bankName)
 
 void OpenCommand::execute()
 {
-	// Task factory probably
-	bankPtr->getLeastBusyEmployee()->addTask(new OpenTask(static_cast<Client*>(System::getInstance().currentUser), bankPtr));
+	OpenTask* ot = new OpenTask(static_cast<Client*>(System::getInstance().currentUser), bankPtr);
+	bankPtr->getLeastBusyEmployee()->addTask(ot);
+	std::cout << "Now employee has " << bankPtr->getLeastBusyEmployee()->getTaskCount() << " tasks.\n\n";
+	std::cout << "Open request sent successfully to Bank \"" << bankPtr->getName() << "\"" << std::endl;
 }

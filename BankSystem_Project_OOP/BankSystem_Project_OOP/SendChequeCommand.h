@@ -1,10 +1,10 @@
 #pragma once
 #include "System.h"
-#include "Command.h"
+#include "UserCommand.h"
 #include "EGN.h"
 #include "Client.h"
 
-class SendChequeCommand : public Command {
+class SendChequeCommand : public UserCommand {
 public:
 	SendChequeCommand(double sum, const MyString& verificationCode, const MyString& recipientEGN);
 

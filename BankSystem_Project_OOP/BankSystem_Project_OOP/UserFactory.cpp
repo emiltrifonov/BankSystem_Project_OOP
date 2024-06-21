@@ -22,7 +22,15 @@ static bool isLatinLetter(char ch) {
     return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
 }
 
+static void validateString(const MyString& str) {
+    if (str.isEmpty()) {
+        throw std::logic_error("Empty string not allowed");
+    }
+}
+
 static void validateName(const MyString& name) {
+    validateString(name);
+
     for (size_t i = 0; i < name.getLength(); i++)
     {
         if (!isLatinLetter(name[i])) {
@@ -32,8 +40,10 @@ static void validateName(const MyString& name) {
 }
 
 static void resetCin() {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
 }
 
 static void validateAge() {
@@ -59,7 +69,7 @@ static void validateEgn() {
 }
 
 static void validateBank(const Bank* bPtr) {
-    if (bPtr) {
+    if (!bPtr) {
         throw std::logic_error("Bank doesn't exist");
     }
 }
@@ -98,16 +108,20 @@ static void getRole() {
 static void getPassword() {
     std::cout << "Password: ";
     std::cin >> password;
+    validateString(password);
 }
 
 static User* handleClient() {
+    std::cout << "Address: ";
     MyString address;
     std::cin >> address;
+    validateString(address);
 
     return new Client(firstName, lastName, egn, password, age, address);
 }
 
 static User* handleEmployee() {
+    std::cout << "Bank associated: ";
     MyString bankName;
     std::cin >> bankName;
 
@@ -135,11 +149,11 @@ User* userFactory()
     switch (role)
     {
     // Client
-    case '1': return handleClient();
+    case 1: return handleClient();
     // Employee
-    case '2': return handleEmployee();
+    case 2: return handleEmployee();
     // ThirdPartyEmployee
-    case '3': return handleThirdPartyEmployee();
+    case 3: return handleThirdPartyEmployee();
     }
 
     return nullptr;

@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 Client::Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, const MyString& address)
-    : User(fN, lN, egn, password, age), address(address) {}
+    : User(fN, lN, egn, password, age), address(address) { }
 
 void Client::help() const
 {

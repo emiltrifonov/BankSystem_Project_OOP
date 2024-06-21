@@ -39,6 +39,11 @@ const EGN& User::getEGN() const
 	return egn;
 }
 
+const MyString& User::getPassword() const
+{
+	return password;
+}
+
 void User::whoami() const
 {
 	cout << "Name: " << firstName << " " << lastName << endl;
