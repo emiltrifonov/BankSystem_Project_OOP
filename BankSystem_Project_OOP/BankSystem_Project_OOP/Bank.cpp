@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bank.h"
+#include "System.h"
 
 Bank::Bank(const MyString& name) : name(name) { }
 
@@ -8,23 +9,27 @@ const MyString& Bank::getName() const
 	return name;
 }
 
-Employee* Bank::getLeastBusyEmployee()
+Employee* Bank::getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>& users)
 {
-	if (employees.getSize() == 0) {
-		throw std::logic_error("No employess available");
-	}
-
-	int currInd = -1;
+	//int currInd = -1;
 	int minTasks = INT_MAX;
-	for (int i = 0; i < employees.getSize(); i++)
+	Employee* result = nullptr;
+	for (int i = 0; i < users.getSize(); i++)
 	{
-		if (employees[i].getTaskCount() < minTasks) {
-			currInd = i;
-			minTasks = employees[i].getTaskCount();
+		User* currentUser = users[i].get();
+		if (users[i].get()->isEmployee() || (Employee*)users[i].get().
+		{
+			Employee* currentEmployee = (Employee*)currentUser;
+			if (currentEmployee->getTaskCount() < minTasks) {
+				//currInd = i;
+				result = currentEmployee;
+				minTasks = currentEmployee->getTaskCount();
+			}
 		}
 	}
 
-	return &employees[currInd];
+	//return &employees[currInd];
+	return result;
 }
 
 const static unsigned getID() {
@@ -47,7 +52,7 @@ void Bank::closeAccount(int ID)
 		}
 	}
 
-	//throw std::logic_error("Account doesn't exist"); Probably shouldn't throw this
+	throw std::logic_error("Account doesn't exist");
 }
 
 bool Bank::isAccountValid(int ID, const Client* cPtr) const
@@ -74,7 +79,7 @@ bool Bank::existsAccount(int accID) const
 	return false;
 }
 
-void Bank::addEmployee(const Employee& eRef)
-{
-	employees.add(eRef);
-}
+//void Bank::addEmployee(const Employee& eRef)
+//{
+//	employees.add(eRef);
+//}

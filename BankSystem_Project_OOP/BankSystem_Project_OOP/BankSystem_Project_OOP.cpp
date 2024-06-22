@@ -1,8 +1,11 @@
 #include <iostream>
 #include <exception>
 #include <limits>
+#include "System.h"
 #include "Command.h"
 #include "CommandFactory.h"
+
+#include "OpenTask.h"
 
 static void resetCin() {
 	if (std::cin.fail()) {
@@ -12,18 +15,20 @@ static void resetCin() {
 }
 
 const static void run() {
+	System s;
+
 	while (true)
 	{
 		try 
 		{
-			Command* cmd = CommandFactory();
+			Command* cmd = CommandFactory(&s);
 			cmd->execute();
 			delete cmd;
 			resetCin();
 		}
 		catch (std::exception& e)
 		{
-			if (strcmp(e.what(),"")) {
+			if (strcmp(e.what(),"") != 0) {
 				std::cout << e.what() << std::endl << std::endl;
 			}
 			resetCin();

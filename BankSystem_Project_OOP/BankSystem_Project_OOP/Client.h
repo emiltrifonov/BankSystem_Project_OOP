@@ -26,8 +26,6 @@ public:
 		messages.push(message);
 	}
 
-	bool operator==(const Client& other) const;
-
 	void whoami() const;
 
 	User* clone() const override final;

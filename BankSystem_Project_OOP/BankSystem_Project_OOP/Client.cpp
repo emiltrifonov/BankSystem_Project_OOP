@@ -43,11 +43,6 @@ bool Client::isClient() const
 //    messages.add(message);
 //}
 
-bool Client::operator==(const Client& other) const
-{
-    return egn == other.egn;
-}
-
 void Client::whoami() const
 {
     User::whoami();

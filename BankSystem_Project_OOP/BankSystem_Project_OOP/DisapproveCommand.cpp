@@ -3,12 +3,22 @@
 #include "DisapproveCommand.h"
 #include "System.h"
 
-DisapproveCommand::DisapproveCommand(int taskIndex, const MyString& reason) : reason(reason)
+DisapproveCommand::DisapproveCommand(System* sPtr, int taskIndex, const MyString& reason) 
+	: reason(reason), EmployeeCommand(sPtr, taskIndex)
 {
-	validateIndex(taskIndex);
+	validateIndex(index);
+
+	task = ((Employee*)(sPtr->currentUser))->getTaskAt(index);
 }
 
 void DisapproveCommand::execute()
 {
-	task->disapprove(reason);
+	try {
+		task->disapprove(reason);
+		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+	}
+	catch (std::exception& e) {
+		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+		throw e;
+	}
 }

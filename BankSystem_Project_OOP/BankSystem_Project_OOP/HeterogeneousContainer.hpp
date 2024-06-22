@@ -9,7 +9,7 @@ public:
 	HeterogeneousContainer();
 	HeterogeneousContainer(int cap);
 	HeterogeneousContainer(const HeterogeneousContainer<T>& other);
-	HeterogeneousContainer(HeterogeneousContainer&& other) noexcept;
+	HeterogeneousContainer(HeterogeneousContainer<T>&& other) noexcept;
 
 	HeterogeneousContainer<T>& operator=(const HeterogeneousContainer<T>& other);
 	HeterogeneousContainer<T>& operator=(HeterogeneousContainer<T>&& other) noexcept;
@@ -37,7 +37,7 @@ private:
 template<class T>
 inline void HeterogeneousContainer<T>::resize(int newCap)
 {
-	T** temp = new T * [newCap];
+	T** temp = new T * [newCap] {nullptr};
 
 	for (size_t i = 0; i < size; i++)
 	{

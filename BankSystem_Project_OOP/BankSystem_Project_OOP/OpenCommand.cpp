@@ -1,22 +1,34 @@
 #include <iostream>
 #include <exception>
 #include "OpenCommand.h"
+#include "ListTasksCommand.h"
 #include "OpenTask.h"
 #include "Client.h"
 
-OpenCommand::OpenCommand(const MyString& bankName)
+OpenCommand::OpenCommand(System* sPtr, const MyString& bankName) : ClientCommand(sPtr)
 {
-	bankPtr = System::getInstance().getBank(bankName);
+	bankPtr = sPtr->getBank(bankName);
 
 	if (!bankPtr) {
-		invalidCmd();
+		throw std::logic_error("Bank not found");
 	}
 }
 
 void OpenCommand::execute()
 {
-	OpenTask* ot = new OpenTask(static_cast<Client*>(System::getInstance().currentUser), bankPtr);
-	bankPtr->getLeastBusyEmployee()->addTask(ot);
-	std::cout << "Now employee has " << bankPtr->getLeastBusyEmployee()->getTaskCount() << " tasks.\n\n";
-	std::cout << "Open request sent successfully to Bank \"" << bankPtr->getName() << "\"" << std::endl;
+	OpenTask* ot = new OpenTask((Client*)(sPtr->currentUser), bankPtr);
+	bankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users)->addTask(ot);
+	Employee* e = bankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users);
+
+	/*std::cout << "Now employee " << e->getFirstName() << " " << e->getLastName() 
+		<< " has " << e->getTaskCount() << " tasks.\n\n";*/
+
+	std::cout << "Open request sent successfully to " 
+		<< e->getFirstName() << " " << e->getLastName() 
+		<< " - employee of Bank \"" << bankPtr->getName() << "\"" << std::endl;
+
+	/*for (size_t i = 0; i < e->tasks.getSize(); i++)
+	{
+		e->tasks[i]->list();
+	}*/
 }

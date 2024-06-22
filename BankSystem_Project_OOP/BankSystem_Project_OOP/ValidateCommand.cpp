@@ -5,11 +5,11 @@
 #include "Task.h"
 #include "ChangeTask.h"
 
-ValidateCommand::ValidateCommand(int taskIndex)
+ValidateCommand::ValidateCommand(System* sPtr, int taskIndex) : EmployeeCommand(sPtr, taskIndex)
 {
-	validateIndex(taskIndex);;
+	validateIndex(index);
 
-	Task* t = static_cast<Employee*>(System::getInstance().currentUser)->tasks[taskIndex];
+	Task* t = static_cast<Employee*>(sPtr->currentUser)->tasks[index].get();
 
 	if (t->isChangeTask()) {
 		task = static_cast<ChangeTask*>(t);

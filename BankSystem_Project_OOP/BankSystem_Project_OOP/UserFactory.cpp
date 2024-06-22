@@ -60,8 +60,8 @@ static void validateRole() {
     }
 }
 
-static void validateEgn() {
-    User* u = System::getInstance().getUser(egn);
+static void validateEgn(System* sPtr) {
+    User* u = sPtr->getUser(egn);
 
     if (u) {
         throw std::logic_error("User with this EGN already exists");
@@ -84,11 +84,11 @@ static void getName() {
     validateName(lastName);
 }
 
-static void getEgn() {
+static void getEgn(System* sPtr) {
     std::cout << "EGN: ";
     std::cin >> egn;
 
-    validateEgn();
+    validateEgn(sPtr);
 }
 
 static void getAge() {
@@ -111,7 +111,7 @@ static void getPassword() {
     validateString(password);
 }
 
-static User* handleClient() {
+Client* handleClient() {
     std::cout << "Address: ";
     MyString address;
     std::cin >> address;
@@ -120,28 +120,28 @@ static User* handleClient() {
     return new Client(firstName, lastName, egn, password, age, address);
 }
 
-static User* handleEmployee() {
+Employee* handleEmployee(System* sPtr) {
     std::cout << "Bank associated: ";
     MyString bankName;
     std::cin >> bankName;
 
-    Bank* b = System::getInstance().getBank(bankName);
+    Bank* b = sPtr->getBank(bankName);
     validateBank(b);
 
     Employee* e = new Employee(firstName, lastName, egn, password, age);
-    b->addEmployee(*e);
+    //b->addEmployee(*e);
 
     return e;
 }
 
-static User* handleThirdPartyEmployee() {
+ThirdPartyEmployee* handleThirdPartyEmployee() {
     return new ThirdPartyEmployee(firstName, lastName, egn, password, age);
 }
 
-User* userFactory()
+User* userFactory(System* sPtr)
 {
     getName();
-    getEgn();
+    getEgn(sPtr);
     getAge();
     getRole();
     getPassword();
@@ -151,10 +151,10 @@ User* userFactory()
     // Client
     case 1: return handleClient();
     // Employee
-    case 2: return handleEmployee();
+    case 2: return handleEmployee(sPtr);
     // ThirdPartyEmployee
     case 3: return handleThirdPartyEmployee();
     }
 
-    return nullptr;
+    throw std::logic_error("Invalid command");
 }

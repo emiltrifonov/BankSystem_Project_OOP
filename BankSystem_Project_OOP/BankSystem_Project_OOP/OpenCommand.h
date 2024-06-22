@@ -5,7 +5,7 @@
 
 class OpenCommand : public ClientCommand {
 public:
-	OpenCommand(const MyString& bankName);
+	OpenCommand(System* sPtr, const MyString& bankName);
 
 	void execute() override final;
 

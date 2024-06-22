@@ -5,7 +5,7 @@
 
 class CloseCommand : public ClientCommand {
 public:
-	CloseCommand(const MyString& bankName, int accID);
+	CloseCommand(System* sPtr, const MyString& bankName, int accID);
 
 	void execute() override final;
 

@@ -4,7 +4,7 @@
 
 class ClientCommand : public UserCommand {
 public:
-	ClientCommand();
+	ClientCommand(System* sPtr);
 
 protected:
 	bool isCurrentUserClient() const;

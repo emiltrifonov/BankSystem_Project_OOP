@@ -5,7 +5,7 @@
 
 class LoginCommand : public SystemCommand {
 public:
-	LoginCommand();
+	LoginCommand(System* sPtr);
 
 	void execute() override final;
 };

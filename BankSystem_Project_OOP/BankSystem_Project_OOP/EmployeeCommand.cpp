@@ -2,7 +2,7 @@
 #include "EmployeeCommand.h"
 #include "System.h"
 
-EmployeeCommand::EmployeeCommand()
+EmployeeCommand::EmployeeCommand(System* sPtr, int index) : UserCommand(sPtr), index(index - 1)
 {
 	if (!isCurrentUserEmployee()) {
 		invalidCmd();
@@ -11,12 +11,12 @@ EmployeeCommand::EmployeeCommand()
 
 bool EmployeeCommand::isCurrentUserEmployee() const
 {
-    return System::getInstance().currentUser->isEmployee();
+    return sPtr->currentUser->isEmployee();
 }
 
 void EmployeeCommand::validateIndex(int index) const
 {
-	if (index < 0 || index >= static_cast<Employee*>(System::getInstance().currentUser)->tasks.getSize()) {
+	if (index < 0 || index >= static_cast<Employee*>(sPtr->currentUser)->tasks.getSize()) {
 		throw std::out_of_range("Index out of range");
 	}
 }

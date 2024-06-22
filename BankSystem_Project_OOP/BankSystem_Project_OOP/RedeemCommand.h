@@ -7,7 +7,7 @@
 
 class RedeemCommand : public ClientCommand {
 public:
-	RedeemCommand(const MyString& bankName, int accID, const MyString& verificationCode);
+	RedeemCommand(System* sPtr, const MyString& bankName, int accID, const MyString& verificationCode);
 
 	void execute() override final;
 

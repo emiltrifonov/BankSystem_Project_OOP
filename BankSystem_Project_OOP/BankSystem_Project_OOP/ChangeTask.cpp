@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "ChangeTask.h"
+#include "ChangeNotValidatedException.h"
 
 ChangeTask::ChangeTask(Client* cPtr, Bank* oldBankPtr, Bank* newBankPtr, int oldAccID)
 	: cPtr(cPtr), oldBankPtr(oldBankPtr), newBankPtr(newBankPtr), oldAccID(oldAccID) { }
@@ -25,7 +26,7 @@ void ChangeTask::approve()
 		newBankPtr->openAccount(cPtr);
 	}
 	else {
-		throw std::logic_error("Cannot proceed - please make sure the user is real by asking the bank!");
+		throw ChangeNotValidatedException();
 	}
 
 	MyString messageText = "Your CHANGE request was approved.";
@@ -52,7 +53,12 @@ bool ChangeTask::isChangeTask() const
 
 void ChangeTask::validate() const
 {
-	oldBankPtr->viewAccount(oldAccID);
+	try {
+		oldBankPtr->viewAccount(oldAccID);
+	}
+	catch (std::exception& e) {
+		throw std::logic_error("Validation unsuccessful");
+	}
 
 	canApprove = true;
 }

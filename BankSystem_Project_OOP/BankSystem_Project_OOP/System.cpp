@@ -2,10 +2,10 @@
 #include <exception>
 #include "System.h"
 
-System& System::getInstance() {
-	static System system;
-	return system;
-}
+//System& System::getInstance() {
+//	static System system;
+//	return system;
+//}
 
 Bank* System::getBank(const MyString& name)
 {
@@ -19,12 +19,12 @@ Bank* System::getBank(const MyString& name)
 	return nullptr;
 }
 
-User* System::getUser(const MyString& egn)
+User* System::getUser(const EGN& egn)
 {
 	for (int i = 0; i < users.getSize(); i++)
 	{
 		if (users[i]->getEGN() == egn) {
-			return users[i];
+			return users[i].get();
 		}
 	}
 

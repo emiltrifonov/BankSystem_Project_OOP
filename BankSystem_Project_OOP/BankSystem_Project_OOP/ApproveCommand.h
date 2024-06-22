@@ -4,7 +4,7 @@
 
 class ApproveCommand : public EmployeeCommand {
 public:
-	ApproveCommand(int taskIndex);
+	ApproveCommand(System* sPtr, int taskIndex);
 
 	void execute() override final;
 

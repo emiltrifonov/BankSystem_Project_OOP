@@ -5,12 +5,13 @@
 #include "System.h"
 #include "MyString.h"
 
-ChangeCommand::ChangeCommand(const MyString& oldBankName, const MyString& newBankName, int oldAccID) : accID(oldAccID)
+ChangeCommand::ChangeCommand(System* sPtr, const MyString& newBankName, const MyString& currentBankName, int oldAccID)
+	: ClientCommand(sPtr), accID(oldAccID)
 {
-	oldBankPtr = System::getInstance().getBank(oldBankName);
-	newBankPtr = System::getInstance().getBank(newBankName);
+	currenBankPtr = sPtr->getBank(currentBankName);
+	newBankPtr = sPtr->getBank(newBankName);
 
-	if (!oldBankPtr || !newBankPtr) {
+	if (!currenBankPtr || !newBankPtr) {
 		invalidCmd();
 	}
 }
@@ -18,6 +19,6 @@ ChangeCommand::ChangeCommand(const MyString& oldBankName, const MyString& newBan
 void ChangeCommand::execute()
 {
 	// Task factory probably
-	newBankPtr->getLeastBusyEmployee()
-		->addTask(new ChangeTask(static_cast<Client*>(System::getInstance().currentUser), oldBankPtr, newBankPtr, accID));
+	newBankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users)
+		->addTask(new ChangeTask(static_cast<Client*>(sPtr->currentUser), currenBankPtr, newBankPtr, accID));
 }

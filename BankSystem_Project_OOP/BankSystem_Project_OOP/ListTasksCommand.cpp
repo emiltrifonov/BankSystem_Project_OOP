@@ -2,10 +2,16 @@
 #include <exception>
 #include "ListTasksCommand.h"
 #include "System.h"
+#include "Employee.h"
+
+ListTasksCommand::ListTasksCommand(System* sPtr) : EmployeeCommand(sPtr, 0)
+{
+	this->sPtr = sPtr;
+}
 
 void ListTasksCommand::execute()
 {
-	Employee* current = static_cast<Employee*>(System::getInstance().currentUser);
+	Employee* current = (Employee*)(sPtr->currentUser);
 
 	std::cout << "Tasks count ->" << current->getTaskCount() << "<-" <<std::endl;
 

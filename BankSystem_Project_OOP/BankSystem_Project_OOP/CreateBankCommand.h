@@ -4,7 +4,7 @@
 
 class CreateBankCommand : public SystemCommand {
 public:
-	CreateBankCommand(const MyString& bankName);
+	CreateBankCommand(System* sPtr, const MyString& bankName);
 
 	void execute() override final;
 

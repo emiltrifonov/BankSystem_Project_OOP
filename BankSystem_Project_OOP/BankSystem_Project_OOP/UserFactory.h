@@ -1,4 +1,5 @@
 #pragma once
+#include "System.h"
 #include "User.h"
 
-User* userFactory();
+User* userFactory(System* sPtr);

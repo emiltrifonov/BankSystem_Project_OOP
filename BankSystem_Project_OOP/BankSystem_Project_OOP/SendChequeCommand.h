@@ -6,7 +6,7 @@
 
 class SendChequeCommand : public UserCommand {
 public:
-	SendChequeCommand(double sum, const MyString& verificationCode, const MyString& recipientEGN);
+	SendChequeCommand(System* sPtr, double sum, const MyString& verificationCode, const MyString& recipientEGN);
 
 	void execute() override final;
 
@@ -15,6 +15,7 @@ private:
 	VerificationCode code;
 	EGN recipientEGN;
 	Client* recipient = nullptr;
+	User* sender = nullptr;
 
 	bool isCurrentUserThirdPartyEmployee() const;
 };

@@ -17,7 +17,7 @@ public:
 
 	const MyString& getName() const;
 
-	Employee* getLeastBusyEmployee();
+	Employee* getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>&);
 
 	void openAccount(const Client* cPtr);
 	void closeAccount(int ID);
@@ -47,6 +47,8 @@ public:
 				std::cout << std::endl;
 			}
 		}
+
+		throw std::out_of_range("");
 	}
 
 	const Account& getAccount(int ID) const {
@@ -73,11 +75,11 @@ public:
 
 	bool existsAccount(int accID) const;
 
-	void addEmployee(const Employee& eRef);
+	//void addEmployee(const Employee& eRef);
 
 private:
 	const MyString name;
-	Collection<Employee> employees;
+	//Collection<Employee> employees;
 	Collection<Account> accounts;
 
 	//void addEmployee(const Employee& eRef);

@@ -13,7 +13,4 @@ public:
 	virtual Task* clone() const = 0;
 
 	virtual ~Task() = default;
-
-protected:
-	int index;
 };

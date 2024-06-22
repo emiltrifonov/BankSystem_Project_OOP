@@ -4,10 +4,10 @@
 
 class ViewTaskCommand : public EmployeeCommand {
 public:
-	ViewTaskCommand(int taskIndex);
+	ViewTaskCommand(System* sPtr, int taskIndex);
 
 	void execute() override final;
 
 private:
-	const int taskIndex;
+	Task* task = nullptr;
 };

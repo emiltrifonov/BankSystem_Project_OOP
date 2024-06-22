@@ -4,7 +4,7 @@
 
 class ListAccountsCommand : public ClientCommand{
 public:
-	ListAccountsCommand(const MyString& bankName);
+	ListAccountsCommand(System* sPtr, const MyString& bankName);
 
 	void execute() override final;
 

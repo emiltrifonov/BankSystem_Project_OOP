@@ -6,12 +6,24 @@ Employee::Employee(const MyString& fN, const MyString& lN, const MyString& egn, 
 
 void Employee::addTask(Task* t)
 {
-	tasks.add(t);
+	tasks.push(t);
 }
 
-int Employee::getTaskCount() const
+void Employee::whoami() const
 {
-	return tasks.getSize();
+	User::whoami();
+
+	std::cout << "Tasks: " << tasks.getSize() << std::endl;
+}
+
+//int Employee::getTaskCount() const
+//{
+//	return tasks.getSize();
+//}
+
+void Employee::removeTaskAt(int index)
+{
+	tasks.popAt(index);
 }
 
 bool Employee::isEmployee() const

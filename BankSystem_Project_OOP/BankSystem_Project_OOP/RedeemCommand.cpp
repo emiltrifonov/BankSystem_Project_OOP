@@ -4,9 +4,10 @@
 #include "RedeemCommand.h"
 #include "MyString.h"
 
-RedeemCommand::RedeemCommand(const MyString& bankName, int accID, const MyString& verificationCode)
+RedeemCommand::RedeemCommand(System* sPtr, const MyString& bankName, int accID, const MyString& verificationCode)
+	: ClientCommand(sPtr)
 {
-	Bank* bank = System::getInstance().getBank(bankName);
+	Bank* bank = sPtr->getBank(bankName);
 	if (!bank) {
 		invalidCmd();
 	}
@@ -17,18 +18,20 @@ RedeemCommand::RedeemCommand(const MyString& bankName, int accID, const MyString
 
 void RedeemCommand::execute()
 {
-	Client* client = static_cast<Client*>(System::getInstance().currentUser);
+	Client* client = static_cast<Client*>(sPtr->currentUser);
 
 	client->pendingCheques.removeAt(chequeIndex);
 	client->redeemedCheques.add(*cheque);
+
+	std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
 
 	account->addBalance(cheque->getSum());
 }
 
 Cheque* RedeemCommand::getCheque(const MyString& verificationCode)
 {
-	int count = static_cast<Client*>(System::getInstance().currentUser)->pendingCheques.getSize();
-	Client* current = static_cast<Client*>(System::getInstance().currentUser);
+	int count = static_cast<Client*>(sPtr->currentUser)->pendingCheques.getSize();
+	Client* current = static_cast<Client*>(sPtr->currentUser);
 	Cheque* currCh = nullptr;
 
 	for (int i = 0; i < count; i++)

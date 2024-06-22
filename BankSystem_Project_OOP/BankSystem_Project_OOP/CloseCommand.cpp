@@ -4,9 +4,9 @@
 #include "CloseTask.h"
 #include "Client.h"
 
-CloseCommand::CloseCommand(const MyString& bankName, int accID) : accID(accID)
+CloseCommand::CloseCommand(System* sPtr, const MyString& bankName, int accID) : ClientCommand(sPtr), accID(accID)
 {
-	bankPtr = System::getInstance().getBank(bankName);
+	bankPtr = sPtr->getBank(bankName);
 
 	if (!bankPtr) {
 		invalidCmd();
@@ -16,6 +16,6 @@ CloseCommand::CloseCommand(const MyString& bankName, int accID) : accID(accID)
 void CloseCommand::execute()
 {
 	// Task factory probably
-	bankPtr->getLeastBusyEmployee()
-		->addTask(new CloseTask(static_cast<Client*>(System::getInstance().currentUser), bankPtr, accID));
+	bankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users)
+		->addTask(new CloseTask(static_cast<Client*>(sPtr->currentUser), bankPtr, accID));
 }

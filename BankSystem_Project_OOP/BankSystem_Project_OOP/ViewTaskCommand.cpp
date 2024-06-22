@@ -4,12 +4,15 @@
 #include "Employee.h"
 #include "System.h"
 
-ViewTaskCommand::ViewTaskCommand(int taskIndex) : taskIndex(taskIndex - 1) 
+ViewTaskCommand::ViewTaskCommand(System* sPtr, int taskIndex) 
+	: EmployeeCommand(sPtr, taskIndex)
 {
-	validateIndex(taskIndex);
+	validateIndex(index);
+
+	task = ((Employee*)(sPtr->currentUser))->getTaskAt(index);
 }
 
 void ViewTaskCommand::execute()
 {
-	static_cast<Employee*>(System::getInstance().currentUser)->tasks[taskIndex]->view();
+	task->view();
 }

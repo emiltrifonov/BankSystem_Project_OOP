@@ -6,9 +6,9 @@
 #include "EGN.h"
 #include "Account.h"
 
-ListAccountsCommand::ListAccountsCommand(const MyString& bankName)
+ListAccountsCommand::ListAccountsCommand(System* sPtr, const MyString& bankName) : ClientCommand(sPtr)
 {
-	bPtr = System::getInstance().getBank(bankName);
+	bPtr = sPtr->getBank(bankName);
 
 	if (!bPtr) {
 		invalidCmd();
@@ -17,7 +17,7 @@ ListAccountsCommand::ListAccountsCommand(const MyString& bankName)
 
 void ListAccountsCommand::execute()
 {
-	const EGN egn = System::getInstance().currentUser->getEGN();
+	const EGN egn = sPtr->currentUser->getEGN();
 	const Account* accPtr;
 
 	for (int i = 0; i < bPtr->accounts.getSize(); i++)

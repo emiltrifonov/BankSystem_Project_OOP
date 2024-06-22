@@ -3,14 +3,16 @@
 #include "HelpCommand.h"
 #include "System.h"
 
-HelpCommand::HelpCommand()
+HelpCommand::HelpCommand(System* sPtr)
 {
-	if (!System::getInstance().currentUser) {
+	this->sPtr = sPtr;
+
+	if (!sPtr->currentUser) {
 		invalidCmd();
 	}
 }
 
 void HelpCommand::execute()
 {
-	System::getInstance().currentUser->help();
+	sPtr->currentUser->help();
 }

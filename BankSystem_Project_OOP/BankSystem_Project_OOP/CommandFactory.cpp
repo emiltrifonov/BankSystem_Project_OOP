@@ -4,11 +4,12 @@
 #include "CommandFactory.h"
 #include "AllCommands.h"
 
+System* s = nullptr;
 
 // Utility
 static void validateCommand(std::stringstream& ss) {
 	if (!ss.eof()) {
-		throw std::logic_error("Command message contains unnecessary information");
+		throw std::logic_error("Command message format not supported");
 	}
 }
 
@@ -46,7 +47,7 @@ static double readDouble(std::istream& is) {
 static Command* handleExit(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new ExitCommand();
+	return new ExitCommand(s);
 }
 
 static Command* handleCreateBank(std::stringstream& ss) {
@@ -55,26 +56,26 @@ static Command* handleCreateBank(std::stringstream& ss) {
 	validateString(bankName);
 	validateCommand(ss);
 
-	return new CreateBankCommand(bankName);
+	return new CreateBankCommand(s, bankName);
 }
 
 static Command* handleLogin(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new LoginCommand();
+	return new LoginCommand(s);
 }
 
 static Command* handleSignup(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new SignupCommand();
+	return new SignupCommand(s);
 }
 
 // User commands
 static Command* handleHelp(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new HelpCommand();
+	return new HelpCommand(s);
 }
 
 // Client commands
@@ -87,7 +88,7 @@ static Command* handleCheckAvl(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new CheckAvlCommand(bankName, accID);
+	return new CheckAvlCommand(s, bankName, accID);
 }
 
 static Command* handleOpen(std::stringstream& ss) {
@@ -95,8 +96,8 @@ static Command* handleOpen(std::stringstream& ss) {
 	ss >> bankName;
 
 	validateCommand(ss);
-
-	return new OpenCommand(bankName);
+	
+	return new OpenCommand(s, bankName);
 }
 
 static Command* handleClose(std::stringstream& ss) {
@@ -107,21 +108,21 @@ static Command* handleClose(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new CloseCommand(bankName, accID);
+	return new CloseCommand(s, bankName, accID);
 }
 
 static Command* handleChange(std::stringstream& ss) {
-	MyString oldBankName;
-	ss >> oldBankName;
 	MyString newBankName;
 	ss >> newBankName;
+	MyString currentBankName;
+	ss >> currentBankName;
 
 	int accID;
 	accID = readInteger(ss);
 
 	validateCommand(ss);
 
-	return new ChangeCommand(oldBankName, newBankName, accID);
+	return new ChangeCommand(s, newBankName, currentBankName, accID);
 }
 
 static Command* handleRedeem(std::stringstream& ss) {
@@ -134,7 +135,7 @@ static Command* handleRedeem(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new RedeemCommand(bankName, accID, verificationCode);
+	return new RedeemCommand(s, bankName, accID, verificationCode);
 }
 
 static Command* handleList(std::stringstream& ss) {
@@ -143,20 +144,20 @@ static Command* handleList(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new ListAccountsCommand(bankName);
+	return new ListAccountsCommand(s, bankName);
 }
 
 static Command* handleMessages(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new MessagesCommand();
+	return new MessagesCommand(s);
 }
 
 // Employee commands
 static Command* handleTasks(std::stringstream& ss) {
 	validateCommand(ss);
 
-	return new ListTasksCommand();
+	return new ListTasksCommand(s);
 }
 
 static Command* handleView(std::stringstream& ss) {
@@ -165,7 +166,7 @@ static Command* handleView(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new ViewTaskCommand(taskID);
+	return new ViewTaskCommand(s, taskID);
 }
 
 static Command* handleApprove(std::stringstream& ss) {
@@ -174,7 +175,7 @@ static Command* handleApprove(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new ApproveCommand(taskID);
+	return new ApproveCommand(s, taskID);
 }
 
 static Command* handleDisapprove(std::stringstream& ss) {
@@ -185,7 +186,7 @@ static Command* handleDisapprove(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new DisapproveCommand(taskID, reason);
+	return new DisapproveCommand(s, taskID, reason);
 }
 
 static Command* handleValidate(std::stringstream& ss) {
@@ -194,7 +195,7 @@ static Command* handleValidate(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new ValidateCommand(taskID);
+	return new ValidateCommand(s, taskID);
 }
 
 // ThirdPartyEmployee commands
@@ -208,11 +209,13 @@ static Command* handleSendCheque(std::stringstream& ss) {
 
 	validateCommand(ss);
 
-	return new SendChequeCommand(sum, verificationCode, recipientEGN);
+	return new SendChequeCommand(s, sum, verificationCode, recipientEGN);
 }
 
-Command* CommandFactory()
+Command* CommandFactory(System* sPtr)
 {
+	s = sPtr;
+
 	static bool skip = false; // Tova e skandalno ama inache ne znam kak da go opravq
 	const int BUFF_SIZE = 1024;
 	char buffer[BUFF_SIZE];
@@ -231,6 +234,10 @@ Command* CommandFactory()
 	}
 	else {
 		skip = false;
+	}
+	if (commandStr == "print") {
+		s->printUsers();
+		throw std::exception("Nigga exception");
 	}
 	if (commandStr == "exit") {
 		return handleExit(ss);

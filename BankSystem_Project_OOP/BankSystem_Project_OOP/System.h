@@ -1,14 +1,17 @@
 #pragma once
-#include "User.h"
 #include "Task.h"
 #include "Bank.h"
-#include "HeterogeneousContainer.hpp"
+#include "UserContainer.hpp"
+#include "PolymorphicPtr.hpp"
 #include "MyString.h"
+#include "Employee.h"
 
 // Singleton
 class System {
 public:
-	static System& getInstance();
+	//static System& getInstance();
+
+	System() = default;
 
 	System(const System& other) = delete;
 	System& operator=(const System& other) = delete;
@@ -44,6 +47,8 @@ public:
 	friend class ListAccountsCommand;
 	friend class MessagesCommand;
 
+	friend class Bank;
+
 	const void printBanks() const {
 		for (int i = 0; i < banks.getSize(); i++)
 		{
@@ -59,15 +64,14 @@ public:
 	}
 
 	Bank* getBank(const MyString& name);
-	User* getUser(const MyString& egn);
-
-	
+	User* getUser(const EGN& egn);
 
 private:
-	HeterogeneousContainer<User> users;
+	//UserContainer users;
+	MyVector<PolymorphicPtr<User>> users;
 	Collection<Bank> banks;
 
 	User* currentUser = nullptr; // Managed by Container of users
 
-	System() = default;
+	//System() = default;
 };

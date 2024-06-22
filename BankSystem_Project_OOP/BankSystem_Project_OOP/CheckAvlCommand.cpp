@@ -1,15 +1,16 @@
 #include <iostream>
 #include <exception>
+#include "System.h"
 #include "CheckAvlCommand.h"
 
-CheckAvlCommand::CheckAvlCommand(const MyString& bankName, int accID)
+CheckAvlCommand::CheckAvlCommand(System* sPtr, const MyString& bankName, int accID) : ClientCommand(sPtr)
 {
-	int banksCount = System::getInstance().banks.getSize();
+	int banksCount = sPtr->banks.getSize();
 	Bank* bank = nullptr;
 
 	for (int i = 0; i < banksCount; i++)
 	{
-		bank = &System::getInstance().banks[i];
+		bank = &sPtr->banks[i];
 		if (bank->getName() == bankName) {
 			break;
 		}

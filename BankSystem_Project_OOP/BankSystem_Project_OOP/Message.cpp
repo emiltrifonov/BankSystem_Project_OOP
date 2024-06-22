@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Message.h"
+#include "Employee.h"
 
 Message::Message(MyString& text, const Employee* processor) : text(text), processor(processor) { }
 

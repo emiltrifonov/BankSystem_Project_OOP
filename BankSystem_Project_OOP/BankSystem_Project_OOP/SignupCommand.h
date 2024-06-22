@@ -2,9 +2,9 @@
 #include "System.h"
 #include "SystemCommand.h"
 
-class SignupCommand : public SystemCommand { // To do after User factory is created
+class SignupCommand : public SystemCommand {
 public:
-	SignupCommand();
+	SignupCommand(System* sPtr);
 
 	void execute() override final;
 };

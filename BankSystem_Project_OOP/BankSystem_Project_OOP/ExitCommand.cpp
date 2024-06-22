@@ -2,15 +2,20 @@
 #include "SystemCommand.h"
 #include "System.h"
 
+ExitCommand::ExitCommand(System* sPtr)
+{
+	this->sPtr = sPtr;
+}
+
 void ExitCommand::execute()
 {
-	if (!System::getInstance().currentUser) {
+	if (!sPtr->currentUser) {
 		std::cout << "Exiting the system..." << std::endl;
 		std::exit(0);
 	}
 	else {
-		User* u = System::getInstance().currentUser;
+		User* u = sPtr->currentUser;
 		std::cout << u->getFirstName() << " " << u->getLastName() << " logged out successfully!" << std::endl;
-		System::getInstance().currentUser = nullptr;
+		sPtr->currentUser = nullptr;
 	}
 }

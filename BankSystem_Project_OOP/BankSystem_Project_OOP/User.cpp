@@ -24,6 +24,11 @@ bool User::isThirdPartyEmployee() const
 	return false;
 }
 
+bool User::operator==(const User& other) const
+{
+	return egn == other.egn;
+}
+
 const MyString& User::getFirstName() const
 {
 	return firstName;
