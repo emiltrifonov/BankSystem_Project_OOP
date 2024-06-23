@@ -5,7 +5,7 @@
 
 class CheckAvlCommand : public ClientCommand {
 public:
-	CheckAvlCommand(System* sPtr, const MyString& bankName, int accID);
+	CheckAvlCommand(const MyString& bankName, int accID);
 
 	void execute() override final;
 

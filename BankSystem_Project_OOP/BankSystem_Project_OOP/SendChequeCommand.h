@@ -6,7 +6,7 @@
 
 class SendChequeCommand : public UserCommand {
 public:
-	SendChequeCommand(System* sPtr, double sum, const MyString& verificationCode, const MyString& recipientEGN);
+	SendChequeCommand(double sum, const MyString& verificationCode, const MyString& recipientEGN);
 
 	void execute() override final;
 

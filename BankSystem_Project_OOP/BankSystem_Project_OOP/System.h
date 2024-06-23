@@ -1,78 +1,46 @@
 #pragma once
 #include "Task.h"
 #include "Bank.h"
-#include "UserContainer.hpp"
 #include "PolymorphicPtr.hpp"
 #include "MyString.h"
 #include "Employee.h"
+#include "ThirdPartyEmployee.h"
 
 // Singleton
 class System {
 public:
-	//static System& getInstance();
-
-	System() = default;
+	static System& getInstance();
 
 	System(const System& other) = delete;
 	System& operator=(const System& other) = delete;
 
-	// System commands
-	friend class ExitCommand;
-	friend class CreateBankCommand;
-	friend class LoginCommand;
-	friend class SignupCommand;
+	User* getCurrentUser();
+	bool getIsRunning() const;
 
-	// User commands
-	friend class UserCommand;
-	friend class WhoamiCommand;
-	friend class HelpCommand;
+	void logout();
+	void exitSystem();
+	void login(User* user);
+	bool isUserLogged() const;
 
-	// Third-Party employee commands
-	friend class SendChequeCommand;
+	User* getUserAt(int index);
+	Bank* getBankAt(int index);
 
-	// Employee commands
-	friend class EmployeeCommand;
-	friend class ListTasksCommand;
-	friend class ViewTaskCommand;
-	friend class ApproveCommand;
-	friend class DisapproveCommand;
-	friend class ValidateCommand;
-
-	// Client commands
-	friend class ClientCommand;
-	friend class CheckAvlCommand;
-	friend class OpenCommand;
-	friend class CloseCommand;
-	friend class ChangeCommand;
-	friend class RedeemCommand;
-	friend class ListAccountsCommand;
-	friend class MessagesCommand;
-
-	friend class Bank;
-
-	const void printBanks() const {
-		for (int i = 0; i < banks.getSize(); i++)
-		{
-			std::cout << banks[i].getName() << std::endl;
-		}
-	}
-
-	const void printUsers() const {
-		for (int i = 0; i < users.getSize(); i++)
-		{
-			users[i]->whoami();
-		}
-	}
+	int getUsersCount() const;
+	int getBanksCount() const;
+	void addBank(const MyString& bankName);
+	void addUser(User* user);
 
 	Bank* getBank(const MyString& name);
 	User* getUser(const EGN& egn);
 
 private:
-	//UserContainer users;
 	MyVector<PolymorphicPtr<User>> users;
+
 	Collection<Bank> banks;
 
 	User* currentUser = nullptr; // Managed by Container of users
 
-	//System() = default;
+	bool isRunning = true;
+
+	System() = default;
 };

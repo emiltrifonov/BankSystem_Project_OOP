@@ -3,14 +3,14 @@
 #include "System.h"
 #include "CheckAvlCommand.h"
 
-CheckAvlCommand::CheckAvlCommand(System* sPtr, const MyString& bankName, int accID) : ClientCommand(sPtr)
+CheckAvlCommand::CheckAvlCommand(const MyString& bankName, int accID)
 {
-	int banksCount = sPtr->banks.getSize();
+	int banksCount = System::getInstance().getBanksCount();
 	Bank* bank = nullptr;
 
 	for (int i = 0; i < banksCount; i++)
 	{
-		bank = &sPtr->banks[i];
+		bank = System::getInstance().getBankAt(i);
 		if (bank->getName() == bankName) {
 			break;
 		}

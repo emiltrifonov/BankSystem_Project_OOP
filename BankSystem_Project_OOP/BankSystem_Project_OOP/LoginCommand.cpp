@@ -6,16 +6,12 @@
 #include "System.h"
 #include "ThirdPartyEmployee.h"
 
-LoginCommand::LoginCommand(System* sPtr)
+LoginCommand::LoginCommand()
 {
-	this->sPtr = sPtr;
-
-	if (sPtr->currentUser) {
+	if (System::getInstance().isUserLogged()) {
 		invalidCmd();
 	}
 }
-
-
 
 void LoginCommand::execute()
 {
@@ -39,23 +35,26 @@ void LoginCommand::execute()
 		invalidCmd();
 	}
 
-	int usersCount = sPtr->users.getSize();
+	int usersCount = System::getInstance().getUsersCount();
 	User* currentUser = nullptr;
 
 	for (int i = 0; i < usersCount; i++)
 	{
-		currentUser = sPtr->users[i].get();
+		currentUser = System::getInstance().getUserAt(i);
 		if (currentUser->getEGN() == egn && currentUser->getPassword() == password) {
 			
-			if (currentUser->isClient()) {
-				sPtr->currentUser = (Client*)currentUser;
+			// Tova dano da ne e bilo vajno
+			/*if (currentUser->isClient()) {
+				System::getInstance().currentUser = (Client*)currentUser;
 			}
 			else if (currentUser->isEmployee()) {
-				sPtr->currentUser = (Employee*)currentUser;
+				System::getInstance().currentUser = (Employee*)currentUser;
 			}
 			else if (currentUser->isThirdPartyEmployee()) {
-				sPtr->currentUser = (ThirdPartyEmployee*)currentUser;
-			}
+				System::getInstance().currentUser = (ThirdPartyEmployee*)currentUser;
+			}*/
+
+			System::getInstance().login(currentUser);
 
 			std::cout << "Successful login, welcome "
 				<< currentUser->getFirstName() << " " << currentUser->getLastName() << "!" << std::endl;

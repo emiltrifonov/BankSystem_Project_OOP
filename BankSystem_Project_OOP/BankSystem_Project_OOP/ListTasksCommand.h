@@ -4,7 +4,5 @@
 
 class ListTasksCommand : public EmployeeCommand {
 public:
-	ListTasksCommand(System* sPtr);
-
 	void execute() override final;
 };

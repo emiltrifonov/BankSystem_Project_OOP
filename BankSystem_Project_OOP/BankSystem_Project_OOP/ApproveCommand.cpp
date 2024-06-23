@@ -5,11 +5,11 @@
 #include "Employee.h"
 #include "ChangeNotValidatedException.h"
 
-ApproveCommand::ApproveCommand(System* sPtr, int taskIndex) : EmployeeCommand(sPtr, taskIndex)
+ApproveCommand::ApproveCommand(int taskIndex) : EmployeeCommand(taskIndex)
 {
 	validateIndex(index);
 
-	task = ((Employee*)(sPtr->currentUser))->getTaskAt(index);
+	task = ((Employee*)(System::getInstance().getCurrentUser()))->getTaskAt(index);
 }
 
 void ApproveCommand::execute()
@@ -17,13 +17,13 @@ void ApproveCommand::execute()
 	try {
 		task->approve();
 		std::cout << "Request approved." << std::endl;
-		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+		((Employee*)(System::getInstance().getCurrentUser()))->removeTaskAt(index);
 	}
 	catch (ChangeNotValidatedException& e) {
 		throw e;
 	}
 	catch (std::exception& e) {
-		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+		((Employee*)(System::getInstance().getCurrentUser()))->removeTaskAt(index);
 		throw e;
 	}
 }

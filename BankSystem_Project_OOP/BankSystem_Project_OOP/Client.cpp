@@ -38,10 +38,30 @@ bool Client::isClient() const
     return true;
 }
 
-//void Client::addMessage(const Message& message)
-//{
-//    messages.add(message);
-//}
+Collection<Cheque>& Client::getPendingCheques()
+{
+    return pendingCheques;
+}
+
+Collection<Cheque>& Client::getRedeemedCheques()
+{
+    return redeemedCheques;
+}
+
+int Client::getMessagesCount() const
+{
+    return messages.getSize();
+}
+
+const Message& Client::getMessageAt(int index) const
+{
+    return messages[index];
+}
+
+void Client::addMessage(const Message& message)
+{
+    messages.add(message);
+}
 
 void Client::whoami() const
 {

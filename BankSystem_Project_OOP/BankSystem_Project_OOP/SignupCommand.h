@@ -4,7 +4,7 @@
 
 class SignupCommand : public SystemCommand {
 public:
-	SignupCommand(System* sPtr);
+	SignupCommand();
 
 	void execute() override final;
 };

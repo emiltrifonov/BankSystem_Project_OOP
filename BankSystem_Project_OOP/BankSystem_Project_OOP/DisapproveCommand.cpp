@@ -3,12 +3,12 @@
 #include "DisapproveCommand.h"
 #include "System.h"
 
-DisapproveCommand::DisapproveCommand(System* sPtr, int taskIndex, const MyString& reason) 
-	: reason(reason), EmployeeCommand(sPtr, taskIndex)
+DisapproveCommand::DisapproveCommand(int taskIndex, const MyString& reason) 
+	: reason(reason), EmployeeCommand(taskIndex)
 {
 	validateIndex(index);
 
-	task = ((Employee*)(sPtr->currentUser))->getTaskAt(index);
+	task = ((Employee*)(System::getInstance().getCurrentUser()))->getTaskAt(index);
 }
 
 void DisapproveCommand::execute()
@@ -16,10 +16,10 @@ void DisapproveCommand::execute()
 	try {
 		task->disapprove(reason);
 		std::cout << "Request denied." << std::endl;
-		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+		((Employee*)(System::getInstance().getCurrentUser()))->removeTaskAt(index);
 	}
 	catch (std::exception& e) {
-		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
+		((Employee*)(System::getInstance().getCurrentUser()))->removeTaskAt(index);
 		throw e;
 	}
 }

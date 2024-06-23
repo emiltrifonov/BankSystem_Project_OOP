@@ -2,35 +2,17 @@
 #include "Bank.h"
 #include "System.h"
 
-Bank::Bank(const MyString& name) : name(name) { }
+Bank::Bank(const MyString& name) : name(name) 
+{
+	if (name.isEmpty()) {
+		throw std::runtime_error("Bank must have a name");
+	}
+}
 
 const MyString& Bank::getName() const
 {
 	return name;
 }
-
-//Employee* Bank::getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>& users)
-//{
-//	//int currInd = -1;
-//	int minTasks = INT_MAX;
-//	Employee* result = nullptr;
-//	for (int i = 0; i < users.getSize(); i++)
-//	{
-//		User* currentUser = users[i].get();
-//		if (users[i].get()->isEmployee() || (Employee*)users[i].get().
-//		{
-//			Employee* currentEmployee = (Employee*)currentUser;
-//			if (currentEmployee->getTaskCount() < minTasks) {
-//				//currInd = i;
-//				result = currentEmployee;
-//				minTasks = currentEmployee->getTaskCount();
-//			}
-//		}
-//	}
-//
-//	//return &employees[currInd];
-//	return result;
-//}
 
 const static unsigned getID() {
 	static unsigned ID = 100;
@@ -43,11 +25,15 @@ Employee* Bank::getLeastBusyEmployee()
 	Employee* result = nullptr;
 	for (int i = 0; i < employees.getSize(); i++)
 	{
-		Employee* currentEmployee = &employees[i];
-		if (currentEmployee->getTasks().getSize() < minTasks) {
+		Employee* currentEmployee = employees[i];
+		if (currentEmployee->getTaskCount() < minTasks) {
 			result = currentEmployee;
-			minTasks = currentEmployee->getTasks().getSize();
+			minTasks = currentEmployee->getTaskCount();
 		}
+	}
+
+	if (!result) {
+		throw std::logic_error("Bank has no employees");
 	}
 
 	return result;
@@ -56,6 +42,11 @@ Employee* Bank::getLeastBusyEmployee()
 void Bank::openAccount(const Client* cPtr)
 {
 	accounts.add(*new Account(cPtr, getID()));
+}
+
+// For change command when "copying" account from old to new bank
+void Bank::openAccount(Account& aPtr) {
+	accounts.add(*new Account(aPtr));
 }
 
 void Bank::closeAccount(int ID)
@@ -83,6 +74,16 @@ bool Bank::isAccountValid(int ID, const Client* cPtr) const
 	return false;
 }
 
+int Bank::getAccountsCount() const
+{
+	return accounts.getSize();
+}
+
+Account& Bank::getAccountAt(int index)
+{
+	return accounts[index];
+}
+
 bool Bank::existsAccount(int accID) const
 {
 	for (int i = 0; i < accounts.getSize(); i++)
@@ -97,10 +98,5 @@ bool Bank::existsAccount(int accID) const
 
 void Bank::addEmployee(Employee* ePtr)
 {
-	employees.add(ePtr);
+	employees.push(ePtr);
 }
-
-//void Bank::addEmployee(const Employee& eRef)
-//{
-//	employees.add(eRef);
-//}

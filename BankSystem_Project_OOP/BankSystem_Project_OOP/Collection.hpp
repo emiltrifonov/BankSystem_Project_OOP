@@ -3,6 +3,8 @@
 #include <exception>
 #define st size_t
 
+// Dynamic array of pointers (because a normal vector  requires
+// default constructor which makes no sense for many of the classes
 template<class T>
 class Collection {
 public:
@@ -18,7 +20,6 @@ public:
 
 	void add(const T& obj);
 	void add(T&& obj);
-	void add(T* ptr);
 
 	void removeAt(int index);
 
@@ -101,16 +102,6 @@ void Collection<T>::add(T&& obj) {
 		resize(capacity * 2);
 	}
 	data[size++] = new T(std::move(obj));
-}
-
-template<class T>
-void Collection<T>::add(T* ptr)
-{
-	if (size >= capacity) {
-		resize(capacity * 2);
-	}
-
-	data[size++] = ptr;
 }
 
 template<class T>

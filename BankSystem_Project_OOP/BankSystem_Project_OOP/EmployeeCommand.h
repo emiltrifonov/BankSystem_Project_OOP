@@ -4,7 +4,8 @@
 
 class EmployeeCommand : public UserCommand {
 public:
-	EmployeeCommand(System* sPtr, int index);
+	EmployeeCommand() = default;
+	EmployeeCommand(int index);
 
 protected:
 	int index = -1;

@@ -5,7 +5,7 @@
 
 class DisapproveCommand : public EmployeeCommand {
 public:
-	DisapproveCommand(System* sPtr, int taskIndex, const MyString& reason);
+	DisapproveCommand(int taskIndex, const MyString& reason);
 
 	void execute() override final;
 

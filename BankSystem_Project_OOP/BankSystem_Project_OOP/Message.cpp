@@ -6,6 +6,12 @@ Message::Message(MyString& text, const Employee* processor) : text(text), proces
 
 std::ostream& operator<<(std::ostream& os, const Message& message)
 {
-	return os << message.text << " ( processed by " << message.processor->getFirstName() << " "
-		<< message.processor->getLastName() << " )";
+	os << message.text;
+
+	if (message.processor) {
+		os << " (processed by " << message.processor->getFirstName() << " "
+			<< message.processor->getLastName() << ").";
+	}
+
+	return os;
 }

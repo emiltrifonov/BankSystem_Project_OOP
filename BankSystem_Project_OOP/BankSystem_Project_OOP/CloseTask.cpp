@@ -1,5 +1,6 @@
 #include <iostream>
 #include <exception>
+#include "System.h"
 #include "CloseTask.h"
 #include "Task.h"
 #include "MyString.h"
@@ -32,22 +33,22 @@ void CloseTask::view() const
 void CloseTask::approve()
 {
 	bPtr->closeAccount(oldAccID);
-	MyString messageText = "Your CLOSE request was approved.";
+	MyString messageText = "Your CLOSE request was approved ";
 	//cPtr->addMessage({ messageText, processor });
-	cPtr->addMessage(messageText);
+	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }
 
 void CloseTask::disapprove(const MyString& reason)
 {
 	// Tui cqloto generirane na message trqa e nqkude otdelno
-	MyString messageText = "Your CLOSE request was not approved. Reason: ";
+	MyString messageText = "Your CLOSE request was not approved. Reason:";
 	messageText += reason;
 
 	//std::cout << message << std::endl;
 
 	//cPtr->addMessage({messageText, processor});
 
-	cPtr->addMessage(messageText);
+	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }
 
 Task* CloseTask::clone() const

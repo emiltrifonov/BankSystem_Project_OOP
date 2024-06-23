@@ -6,9 +6,9 @@
 #include "EGN.h"
 #include "Account.h"
 
-ListAccountsCommand::ListAccountsCommand(System* sPtr, const MyString& bankName) : ClientCommand(sPtr)
+ListAccountsCommand::ListAccountsCommand(const MyString& bankName)
 {
-	bPtr = sPtr->getBank(bankName);
+	bPtr = System::getInstance().getBank(bankName);
 
 	if (!bPtr) {
 		invalidCmd();
@@ -17,13 +17,13 @@ ListAccountsCommand::ListAccountsCommand(System* sPtr, const MyString& bankName)
 
 void ListAccountsCommand::execute()
 {
-	const EGN egn = sPtr->currentUser->getEGN();
-	const Account* accPtr;
+	const EGN egn = System::getInstance().getCurrentUser()->getEGN();
+	const Account* accPtr = nullptr;
 
-	for (int i = 0; i < bPtr->accounts.getSize(); i++)
+	for (int i = 0; i < bPtr->getAccountsCount(); i++)
 	{
-		accPtr = &bPtr->accounts[i];
-		if (bPtr->accounts[i].getHolder()->getEGN() == egn) {
+		accPtr = &bPtr->getAccountAt(i);
+		if (accPtr->getHolder()->getEGN() == egn) {
 			std::cout << "* " << accPtr->getID() << std::endl;
 		}
 	}

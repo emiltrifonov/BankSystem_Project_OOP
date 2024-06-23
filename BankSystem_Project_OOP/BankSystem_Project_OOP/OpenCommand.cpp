@@ -5,9 +5,9 @@
 #include "OpenTask.h"
 #include "Client.h"
 
-OpenCommand::OpenCommand(System* sPtr, const MyString& bankName) : ClientCommand(sPtr)
+OpenCommand::OpenCommand(const MyString& bankName)
 {
-	bankPtr = sPtr->getBank(bankName);
+	bankPtr = System::getInstance().getBank(bankName);
 
 	if (!bankPtr) {
 		throw std::logic_error("Bank not found");
@@ -16,7 +16,7 @@ OpenCommand::OpenCommand(System* sPtr, const MyString& bankName) : ClientCommand
 
 void OpenCommand::execute()
 {
-	OpenTask* ot = new OpenTask((Client*)(sPtr->currentUser), bankPtr);
+	OpenTask* ot = new OpenTask((Client*)(System::getInstance().getCurrentUser()), bankPtr);
 	Employee* ePtr = bankPtr->getLeastBusyEmployee();
 	ePtr->addTask(ot);
 

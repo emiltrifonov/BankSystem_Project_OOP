@@ -2,4 +2,4 @@
 #include "System.h"
 #include "Command.h"
 
-Command* CommandFactory(System* s);
+Command* CommandFactory();

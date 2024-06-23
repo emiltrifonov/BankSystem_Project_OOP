@@ -5,7 +5,7 @@
 
 class ValidateCommand : public EmployeeCommand {
 public:
-	ValidateCommand(System* sPtr, int taskIndex);
+	ValidateCommand(int taskIndex);
 
 	void execute() override final;
 

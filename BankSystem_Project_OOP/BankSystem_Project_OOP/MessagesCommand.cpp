@@ -2,15 +2,13 @@
 #include <exception>
 #include "MessagesCommand.h"
 
-MessagesCommand::MessagesCommand(System* sPtr) : ClientCommand(sPtr) { }
-
 void MessagesCommand::execute()
 {
-	const Client* user = dynamic_cast<Client*>(sPtr->currentUser);
-	int count = user->messages.getSize();
+	const Client* user = dynamic_cast<Client*>(System::getInstance().getCurrentUser());
+	int count = user->getMessagesCount();
 
 	for (int i = 0; i < count; i++)
 	{
-		std::cout << "[" << (i + 1) << "] - " << user->messages[i] << std::endl;
+		std::cout << "[" << (i + 1) << "] - " << user->getMessageAt(i) << std::endl;
 	}
 }

@@ -4,7 +4,7 @@
 
 class ChangeCommand : public ClientCommand {
 public:
-	ChangeCommand(System* sPtr, const MyString& oldBankName, const MyString& newBankName, int oldAccID);
+	ChangeCommand(const MyString& oldBankName, const MyString& newBankName, int oldAccID);
 
 	void execute() override final;
 

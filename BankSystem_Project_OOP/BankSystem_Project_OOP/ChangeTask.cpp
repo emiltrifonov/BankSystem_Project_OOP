@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "ChangeTask.h"
+#include "System.h"
 #include "ChangeNotValidatedException.h"
 
 ChangeTask::ChangeTask(Client* cPtr, Bank* oldBankPtr, Bank* newBankPtr, int oldAccID)
@@ -22,28 +23,29 @@ void ChangeTask::view() const
 void ChangeTask::approve()
 {
 	if (canApprove) {
+		Account aPtr = oldBankPtr->getAccount(oldAccID);
+		newBankPtr->openAccount(aPtr);
 		oldBankPtr->closeAccount(oldAccID);
-		newBankPtr->openAccount(cPtr);
 	}
 	else {
 		throw ChangeNotValidatedException();
 	}
 
-	MyString messageText = "Your CHANGE request was approved.";
+	MyString messageText = "Your CHANGE request was approved ";
 
 	//cPtr->addMessage({ messageText, processor });
 
-	cPtr->addMessage(messageText);
+	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser()});
 }
 
 void ChangeTask::disapprove(const MyString& reason)
 {
-	MyString messageText = "Your CHANGE request was not approved. Reason: ";
+	MyString messageText = "Your CHANGE request was not approved. Reason:";
 	messageText += reason;
 
 	//cPtr->addMessage({ messageText, processor });
 
-	cPtr->addMessage(messageText);
+	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }
 
 bool ChangeTask::isChangeTask() const

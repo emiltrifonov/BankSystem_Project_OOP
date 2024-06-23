@@ -5,21 +5,19 @@
 #include "Client.h"
 #include "SendChequeCommand.h"
 
-SendChequeCommand::SendChequeCommand(System* sPtr, double sum, const MyString& verificationCode, const MyString& recipientEGN)
-	: UserCommand(sPtr), sum(sum), code(verificationCode), recipientEGN(recipientEGN), sender(sPtr->currentUser)
+SendChequeCommand::SendChequeCommand(double sum, const MyString& verificationCode, const MyString& recipientEGN)
+	: sum(sum), code(verificationCode), recipientEGN(recipientEGN), sender(System::getInstance().getCurrentUser())
 {
-	this->sPtr = sPtr;
-
 	if (!isCurrentUserThirdPartyEmployee() || sum <= 0) {
 		invalidCmd();
 	}
-
-	int usersCount = sPtr->users.getSize();
+	
+	int usersCount = System::getInstance().getUsersCount();
 	User* current = nullptr;
 
 	for (int i = 0; i < usersCount; i++)
 	{
-		 current = sPtr->users[i].get();
+		 current = System::getInstance().getUserAt(i);
 
 		if (current->getEGN() == recipientEGN) {
 			if (current->isClient()) {
@@ -36,20 +34,22 @@ SendChequeCommand::SendChequeCommand(System* sPtr, double sum, const MyString& v
 
 void SendChequeCommand::execute()
 {
+	Cheque* c = new Cheque(code, sum);
+	std::cout << c->getCode() << " " << c->getSum() << std::endl;
 	recipient->addCheque(new Cheque(code, sum));
 	MyString message = "You have a cheque assigned to you by ";
 	message += sender->getFirstName();
 	message += " ";
 	message += sender->getLastName();
-	message += "(verification code: ";
+	message += " (verification code: ";
 	message += code.getCode();
-	message += ")";
-	recipient->addMessage(message);
+	message += ").";
+	recipient->addMessage({ message, nullptr });
 
 	std::cout << "Cheque sent." << std::endl;
 }
 
 bool SendChequeCommand::isCurrentUserThirdPartyEmployee() const
 {
-	return sPtr->currentUser->isThirdPartyEmployee();
+	return System::getInstance().getCurrentUser()->isThirdPartyEmployee();
 }

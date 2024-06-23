@@ -34,7 +34,7 @@ static void validateName(const MyString& name) {
     for (size_t i = 0; i < name.getLength(); i++)
     {
         if (!isLatinLetter(name[i])) {
-            throw std::logic_error("Invalid name");
+            throw std::logic_error("Name must contain only latin letters");
         }
     }
 }
@@ -60,8 +60,8 @@ static void validateRole() {
     }
 }
 
-static void validateEgn(System* sPtr) {
-    User* u = sPtr->getUser(egn);
+static void validateEgn() {
+    User* u = System::getInstance().getUser(egn);
 
     if (u) {
         throw std::logic_error("User with this EGN already exists");
@@ -84,11 +84,11 @@ static void getName() {
     validateName(lastName);
 }
 
-static void getEgn(System* sPtr) {
+static void getEgn() {
     std::cout << "EGN: ";
     std::cin >> egn;
 
-    validateEgn(sPtr);
+    validateEgn();
 }
 
 static void getAge() {
@@ -120,12 +120,12 @@ Client* handleClient() {
     return new Client(firstName, lastName, egn, password, age, address);
 }
 
-Employee* handleEmployee(System* sPtr) {
+Employee* handleEmployee() {
     std::cout << "Bank associated: ";
     MyString bankName;
     std::cin >> bankName;
 
-    Bank* b = sPtr->getBank(bankName);
+    Bank* b = System::getInstance().getBank(bankName);
     validateBank(b);
 
     Employee* e = new Employee(firstName, lastName, egn, password, age);
@@ -138,23 +138,20 @@ ThirdPartyEmployee* handleThirdPartyEmployee() {
     return new ThirdPartyEmployee(firstName, lastName, egn, password, age);
 }
 
-User* userFactory(System* sPtr)
+User* userFactory()
 {
     getName();
-    getEgn(sPtr);
+    getEgn();
     getAge();
     getRole();
     getPassword();
 
     switch (role)
     {
-    // Client
     case 1: return handleClient();
-    // Employee
-    case 2: return handleEmployee(sPtr);
-    // ThirdPartyEmployee
+    case 2: return handleEmployee();
     case 3: return handleThirdPartyEmployee();
     }
 
-    throw std::logic_error("Invalid command");
+    throw std::logic_error("Invalid input");
 }

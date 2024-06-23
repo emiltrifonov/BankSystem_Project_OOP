@@ -10,8 +10,6 @@ public:
 	virtual void help() const = 0;
 	virtual User* clone() const = 0;
 
-	virtual int getTaskCount() const { return -1; }
-
 	// Tova SHTE se mahne ToT
 	virtual bool isClient() const;
 	virtual bool isEmployee() const;

@@ -8,7 +8,5 @@ public:
 	virtual ~Command() = default;
 
 protected:
-	System* sPtr;
-
 	void invalidCmd() const;
 };

@@ -4,7 +4,7 @@
 
 class UserCommand : public Command {
 public:
-	UserCommand(System* sPtr);
+	UserCommand();
 
 private:
 	bool isUserCurrentlyLogged() const;

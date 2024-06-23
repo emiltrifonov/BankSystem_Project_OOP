@@ -4,7 +4,7 @@
 
 class ViewTaskCommand : public EmployeeCommand {
 public:
-	ViewTaskCommand(System* sPtr, int taskIndex);
+	ViewTaskCommand(int taskIndex);
 
 	void execute() override final;
 

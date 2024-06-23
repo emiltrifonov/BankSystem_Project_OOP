@@ -3,7 +3,7 @@
 #include "ClientCommand.h"
 #include "System.h"
 
-ClientCommand::ClientCommand(System* sPtr) : UserCommand(sPtr)
+ClientCommand::ClientCommand()
 {
     if (!isCurrentUserClient()) {
         invalidCmd();
@@ -12,5 +12,5 @@ ClientCommand::ClientCommand(System* sPtr) : UserCommand(sPtr)
 
 bool ClientCommand::isCurrentUserClient() const
 {
-    return sPtr->currentUser->isClient();
+    return System::getInstance().getCurrentUser()->isClient();
 }

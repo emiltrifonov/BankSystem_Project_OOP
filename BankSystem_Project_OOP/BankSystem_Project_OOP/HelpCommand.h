@@ -4,7 +4,7 @@
 
 class HelpCommand : public Command {
 public:
-	HelpCommand(System* sPtr);
+	HelpCommand();
 
 	void execute() override final;
 };

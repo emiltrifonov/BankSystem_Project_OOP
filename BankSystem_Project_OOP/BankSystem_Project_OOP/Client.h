@@ -10,23 +10,18 @@ class Client : public User {
 public:
 	Client(const MyString& fN, const MyString& lN, const MyString& egn, const MyString& password, int age, 
 		const MyString& address);
+
 	void help() const override final;
+	void whoami() const;
 
 	void addCheque(const Cheque* cheque);
-	//void redeemCheque(const MyString& bankName, int accID, const MyString& verificationCode);
 
-	bool isClient() const override final;
+	Collection<Cheque>& getPendingCheques();
+	Collection<Cheque>& getRedeemedCheques();
 
-	// Commands
-	friend class MessagesCommand;
-	friend class RedeemCommand;
-
-	//void addMessage(const Message& message);
-	void addMessage(const MyString& message) {
-		messages.push(message);
-	}
-
-	void whoami() const;
+	int getMessagesCount() const;
+	const Message& getMessageAt(int index) const;
+	void addMessage(const Message& message);
 
 	User* clone() const override final;
 
@@ -34,6 +29,5 @@ private:
 	const MyString address;
 	Collection<Cheque> pendingCheques;
 	Collection<Cheque> redeemedCheques;
-	//Collection<Message> messages;
-	MyVector<MyString> messages; // Temporary
+	Collection<Message> messages;
 };

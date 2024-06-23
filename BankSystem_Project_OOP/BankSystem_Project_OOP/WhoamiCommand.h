@@ -4,7 +4,5 @@
 
 class WhoamiCommand : public UserCommand {
 public:
-	WhoamiCommand(System* s);
-
 	void execute() override final;
 };

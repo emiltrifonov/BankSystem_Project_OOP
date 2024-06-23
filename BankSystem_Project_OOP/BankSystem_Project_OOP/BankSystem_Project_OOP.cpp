@@ -4,24 +4,14 @@
 #include "System.h"
 #include "Command.h"
 #include "CommandFactory.h"
+#include "Utility.h"
 
-#include "OpenTask.h"
-
-static void resetCin() {
-	if (std::cin.fail()) {
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	}
-}
-
-const static void run() {
-	System s;
-
-	while (true)
+static void run() {
+	while (System::getInstance().getIsRunning())
 	{
 		try 
 		{
-			Command* cmd = CommandFactory(&s);
+			Command* cmd = CommandFactory();
 			cmd->execute();
 			delete cmd;
 			resetCin();

@@ -4,19 +4,17 @@
 #include "System.h"
 #include "UserFactory.h"
 
-SignupCommand::SignupCommand(System* sPtr)
+SignupCommand::SignupCommand()
 {
-	this->sPtr = sPtr;
-
-	if (sPtr->currentUser) {
+	if (System::getInstance().isUserLogged()) {
 		throw std::logic_error("Current user must log out first");
 	}
 }
 
 void SignupCommand::execute()
 {
-	User* u = userFactory(sPtr);
-	sPtr->users.push(u);
-	std::cout << "User " << u->getFirstName() << " " << u->getLastName() 
+	User* uPtr = userFactory();
+	System::getInstance().addUser(uPtr);
+	std::cout << "User " << uPtr->getFirstName() << " " << uPtr->getLastName() 
 		<< " created successfully!" << std::endl;
 }

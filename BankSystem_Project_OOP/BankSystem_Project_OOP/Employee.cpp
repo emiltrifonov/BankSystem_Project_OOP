@@ -16,10 +16,15 @@ void Employee::whoami() const
 	std::cout << "Tasks: " << tasks.getSize() << std::endl;
 }
 
-//int Employee::getTaskCount() const
-//{
-//	return tasks.getSize();
-//}
+int Employee::getTaskCount() const
+{
+	return tasks.getSize();
+}
+
+Task* Employee::getTaskAt(int ind)
+{
+	return tasks[ind].get();
+}
 
 void Employee::removeTaskAt(int index)
 {

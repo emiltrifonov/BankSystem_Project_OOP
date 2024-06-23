@@ -4,10 +4,9 @@
 #include "RedeemCommand.h"
 #include "MyString.h"
 
-RedeemCommand::RedeemCommand(System* sPtr, const MyString& bankName, int accID, const MyString& verificationCode)
-	: ClientCommand(sPtr)
+RedeemCommand::RedeemCommand(const MyString& bankName, int accID, const MyString& verificationCode)
 {
-	Bank* bank = sPtr->getBank(bankName);
+	Bank* bank = System::getInstance().getBank(bankName);
 	if (!bank) {
 		invalidCmd();
 	}
@@ -18,27 +17,28 @@ RedeemCommand::RedeemCommand(System* sPtr, const MyString& bankName, int accID, 
 
 void RedeemCommand::execute()
 {
-	Client* client = static_cast<Client*>(sPtr->currentUser);
+	Client* client = static_cast<Client*>(System::getInstance().getCurrentUser());
 
-	client->pendingCheques.removeAt(chequeIndex);
-	client->redeemedCheques.add(*cheque);
+	Cheque* newChequePtr = new Cheque(*cheque);
+	client->getRedeemedCheques().add(*newChequePtr);
+	account->addBalance(newChequePtr->getSum());
 
-	//std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
+	std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
 
-	account->addBalance(cheque->getSum());
+	std::cout << newChequePtr->getSum() << "$ added to *" << account->getID() << "." << std::endl;
 
-	std::cout << cheque->getSum() << "$ added to *" << account->getID() << "." << std::endl;
+	client->getPendingCheques().removeAt(chequeIndex);
 }
 
 Cheque* RedeemCommand::getCheque(const MyString& verificationCode)
 {
-	int count = static_cast<Client*>(sPtr->currentUser)->pendingCheques.getSize();
-	Client* current = static_cast<Client*>(sPtr->currentUser);
+	Client* current = static_cast<Client*>(System::getInstance().getCurrentUser());
+	int count = current->getPendingCheques().getSize();
 	Cheque* currCh = nullptr;
 
 	for (int i = 0; i < count; i++)
 	{
-		currCh = &current->pendingCheques[i];
+		currCh = &current->getPendingCheques()[i];
 		if (currCh->getCode() == verificationCode) {
 			chequeIndex = i;
 			return currCh;

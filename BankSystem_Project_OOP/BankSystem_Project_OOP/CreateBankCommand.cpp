@@ -4,15 +4,13 @@
 #include "System.h"
 #include "SystemCommand.h"
 
-CreateBankCommand::CreateBankCommand(System* sPtr, const MyString& bankName) : bankName(bankName)
+CreateBankCommand::CreateBankCommand(const MyString& bankName) : bankName(bankName)
 {
-	this->sPtr = sPtr;
-
-	int banksCount = sPtr->banks.getSize();
+	int banksCount = System::getInstance().getBanksCount();
 
 	for (int i = 0; i < banksCount; i++)
 	{
-		if (sPtr->getBank(bankName)) {
+		if (System::getInstance().getBank(bankName)) {
 			throw std::logic_error("Bank already exists");
 		}
 	}
@@ -20,6 +18,6 @@ CreateBankCommand::CreateBankCommand(System* sPtr, const MyString& bankName) : b
 
 void CreateBankCommand::execute()
 {
-	sPtr->banks.add(bankName);
+	System::getInstance().addBank(bankName);
 	std::cout << "Bank created successfully" << std::endl;
 }
