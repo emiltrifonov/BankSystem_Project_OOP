@@ -25,6 +25,7 @@ const static void run() {
 			cmd->execute();
 			delete cmd;
 			resetCin();
+			std::cout << std::endl;
 		}
 		catch (std::exception& e)
 		{

@@ -72,6 +72,12 @@ static Command* handleSignup(std::stringstream& ss) {
 }
 
 // User commands
+static Command* handleWhoami(std::stringstream& ss) {
+	validateCommand(ss);
+
+	return new WhoamiCommand(s);
+}
+
 static Command* handleHelp(std::stringstream& ss) {
 	validateCommand(ss);
 
@@ -250,6 +256,9 @@ Command* CommandFactory(System* sPtr)
 	}
 	if (commandStr == "signup") {
 		return handleSignup(ss);
+	}
+	if (commandStr == "whoami") {
+		return handleWhoami(ss);
 	}
 	if (commandStr == "help") {
 		return handleHelp(ss);

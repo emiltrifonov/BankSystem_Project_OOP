@@ -1,5 +1,4 @@
 #pragma once
-#include <stdio.h>
 #include "MyString.h"
 #include "MyVector.hpp"
 #include "Collection.hpp"
@@ -17,7 +16,8 @@ public:
 
 	const MyString& getName() const;
 
-	Employee* getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>&);
+	//Employee* getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>&);
+	Employee* getLeastBusyEmployee();
 
 	void openAccount(const Client* cPtr);
 	void closeAccount(int ID);
@@ -45,6 +45,7 @@ public:
 				std::cout << "Bank: " << name << std::endl;
 				std::cout << "Acccount ID: " << accounts[i].getID() << std::endl;
 				std::cout << std::endl;
+				return;
 			}
 		}
 
@@ -75,11 +76,11 @@ public:
 
 	bool existsAccount(int accID) const;
 
-	//void addEmployee(const Employee& eRef);
+	void addEmployee(Employee* ePtr);
 
 private:
 	const MyString name;
-	//Collection<Employee> employees;
+	Collection<Employee> employees;
 	Collection<Account> accounts;
 
 	//void addEmployee(const Employee& eRef);

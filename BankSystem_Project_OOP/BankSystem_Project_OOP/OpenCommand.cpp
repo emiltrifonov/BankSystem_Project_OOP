@@ -17,18 +17,9 @@ OpenCommand::OpenCommand(System* sPtr, const MyString& bankName) : ClientCommand
 void OpenCommand::execute()
 {
 	OpenTask* ot = new OpenTask((Client*)(sPtr->currentUser), bankPtr);
-	bankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users)->addTask(ot);
-	Employee* e = bankPtr->getLeastBusyEmployee(sPtr->banks, sPtr->users);
+	Employee* ePtr = bankPtr->getLeastBusyEmployee();
+	ePtr->addTask(ot);
 
-	/*std::cout << "Now employee " << e->getFirstName() << " " << e->getLastName() 
-		<< " has " << e->getTaskCount() << " tasks.\n\n";*/
-
-	std::cout << "Open request sent successfully to " 
-		<< e->getFirstName() << " " << e->getLastName() 
-		<< " - employee of Bank \"" << bankPtr->getName() << "\"" << std::endl;
-
-	/*for (size_t i = 0; i < e->tasks.getSize(); i++)
-	{
-		e->tasks[i]->list();
-	}*/
+	std::cout << "Open request sent to " << ePtr->getFirstName() << " " << ePtr->getLastName()
+		<< " from bank \"" << bankPtr->getName() << "\"." << std::endl;
 }

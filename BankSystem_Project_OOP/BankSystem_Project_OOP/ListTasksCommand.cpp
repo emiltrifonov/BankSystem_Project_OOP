@@ -13,7 +13,7 @@ void ListTasksCommand::execute()
 {
 	Employee* current = (Employee*)(sPtr->currentUser);
 
-	std::cout << "Tasks count ->" << current->getTaskCount() << "<-" <<std::endl;
+	//std::cout << "Tasks count ->" << current->getTaskCount() << "<-" <<std::endl;
 
 	for (int i = 0; i < current->getTaskCount(); i++)
 	{

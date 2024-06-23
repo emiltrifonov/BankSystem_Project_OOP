@@ -23,9 +23,11 @@ void RedeemCommand::execute()
 	client->pendingCheques.removeAt(chequeIndex);
 	client->redeemedCheques.add(*cheque);
 
-	std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
+	//std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
 
 	account->addBalance(cheque->getSum());
+
+	std::cout << cheque->getSum() << "$ added to *" << account->getID() << "." << std::endl;
 }
 
 Cheque* RedeemCommand::getCheque(const MyString& verificationCode)

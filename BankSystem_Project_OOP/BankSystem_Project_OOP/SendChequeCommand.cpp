@@ -45,6 +45,8 @@ void SendChequeCommand::execute()
 	message += code.getCode();
 	message += ")";
 	recipient->addMessage(message);
+
+	std::cout << "Cheque sent." << std::endl;
 }
 
 bool SendChequeCommand::isCurrentUserThirdPartyEmployee() const

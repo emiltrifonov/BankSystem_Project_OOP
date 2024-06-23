@@ -14,13 +14,14 @@ void OpenTask::view() const
 {
 	std::cout << "Open request from:" << std::endl;
 	cPtr->whoami();
-	std::cout << "Bank: " << bPtr->getName() << std::endl;
 }
 
 void OpenTask::approve()
 {
 	bPtr->openAccount(cPtr);
-	MyString messageText = "Your OPEN request was approved.";
+	MyString messageText = "Your OPEN request to bank ";
+	messageText += bPtr->getName();
+	messageText += " was approved.";
 	//cPtr->addMessage({ messageText, processor });
 	cPtr->addMessage(messageText);
 }

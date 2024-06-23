@@ -24,6 +24,7 @@ public:
 
 	// User commands
 	friend class UserCommand;
+	friend class WhoamiCommand;
 	friend class HelpCommand;
 
 	// Third-Party employee commands

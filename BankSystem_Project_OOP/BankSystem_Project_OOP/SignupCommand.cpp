@@ -18,5 +18,5 @@ void SignupCommand::execute()
 	User* u = userFactory(sPtr);
 	sPtr->users.push(u);
 	std::cout << "User " << u->getFirstName() << " " << u->getLastName() 
-		<< " created successfully" << std::endl << std::endl;
+		<< " created successfully!" << std::endl;
 }

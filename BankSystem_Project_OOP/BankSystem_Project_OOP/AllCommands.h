@@ -4,6 +4,7 @@
 #include "LoginCommand.h"
 #include "SignupCommand.h"
 #include "CreateBankCommand.h"
+#include "WhoamiCommand.h"
 #include "HelpCommand.h"
 #include "CheckAvlCommand.h"
 #include "OpenCommand.h"

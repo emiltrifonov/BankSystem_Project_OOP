@@ -129,7 +129,7 @@ Employee* handleEmployee(System* sPtr) {
     validateBank(b);
 
     Employee* e = new Employee(firstName, lastName, egn, password, age);
-    //b->addEmployee(*e);
+    b->addEmployee(e);
 
     return e;
 }

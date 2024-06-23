@@ -9,32 +9,48 @@ const MyString& Bank::getName() const
 	return name;
 }
 
-Employee* Bank::getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>& users)
-{
-	//int currInd = -1;
-	int minTasks = INT_MAX;
-	Employee* result = nullptr;
-	for (int i = 0; i < users.getSize(); i++)
-	{
-		User* currentUser = users[i].get();
-		if (users[i].get()->isEmployee() || (Employee*)users[i].get().
-		{
-			Employee* currentEmployee = (Employee*)currentUser;
-			if (currentEmployee->getTaskCount() < minTasks) {
-				//currInd = i;
-				result = currentEmployee;
-				minTasks = currentEmployee->getTaskCount();
-			}
-		}
-	}
-
-	//return &employees[currInd];
-	return result;
-}
+//Employee* Bank::getLeastBusyEmployee(MyVector<PolymorphicPtr<User>>& users)
+//{
+//	//int currInd = -1;
+//	int minTasks = INT_MAX;
+//	Employee* result = nullptr;
+//	for (int i = 0; i < users.getSize(); i++)
+//	{
+//		User* currentUser = users[i].get();
+//		if (users[i].get()->isEmployee() || (Employee*)users[i].get().
+//		{
+//			Employee* currentEmployee = (Employee*)currentUser;
+//			if (currentEmployee->getTaskCount() < minTasks) {
+//				//currInd = i;
+//				result = currentEmployee;
+//				minTasks = currentEmployee->getTaskCount();
+//			}
+//		}
+//	}
+//
+//	//return &employees[currInd];
+//	return result;
+//}
 
 const static unsigned getID() {
 	static unsigned ID = 100;
 	return ID++;
+}
+
+Employee* Bank::getLeastBusyEmployee()
+{
+	int minTasks = INT_MAX;
+	Employee* result = nullptr;
+	for (int i = 0; i < employees.getSize(); i++)
+	{
+		Employee* currentEmployee = &employees[i];
+		if (currentEmployee->getTasks().getSize() < minTasks) {
+			result = currentEmployee;
+			minTasks = currentEmployee->getTasks().getSize();
+		}
+	}
+
+	return result;
 }
 
 void Bank::openAccount(const Client* cPtr)
@@ -77,6 +93,11 @@ bool Bank::existsAccount(int accID) const
 	}
 
 	return false;
+}
+
+void Bank::addEmployee(Employee* ePtr)
+{
+	employees.add(ePtr);
 }
 
 //void Bank::addEmployee(const Employee& eRef)

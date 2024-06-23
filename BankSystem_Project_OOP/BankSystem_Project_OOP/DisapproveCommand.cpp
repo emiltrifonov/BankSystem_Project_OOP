@@ -15,6 +15,7 @@ void DisapproveCommand::execute()
 {
 	try {
 		task->disapprove(reason);
+		std::cout << "Request denied." << std::endl;
 		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
 	}
 	catch (std::exception& e) {

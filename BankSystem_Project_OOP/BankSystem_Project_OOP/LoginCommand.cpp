@@ -59,11 +59,6 @@ void LoginCommand::execute()
 
 			std::cout << "Successful login, welcome "
 				<< currentUser->getFirstName() << " " << currentUser->getLastName() << "!" << std::endl;
-			
-			/*if (currentUser->isEmployee())
-			{
-				((Employee*)currentUser)->whoami();
-			}*/
 
 			return;
 		}

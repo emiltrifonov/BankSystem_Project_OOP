@@ -43,6 +43,6 @@ public:
 private:
  	//HeterogeneousContainer<Task> tasks;
 	MyVector<PolymorphicPtr<Task>> tasks;
-	Bank* bank = nullptr;  // To do
+	//Bank* bank = nullptr;  // To do
 	// Employee must know which bank they work for in order to fix the getLeastBusyEmployee() function
 };

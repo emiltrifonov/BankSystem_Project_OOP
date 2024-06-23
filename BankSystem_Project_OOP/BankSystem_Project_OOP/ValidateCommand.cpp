@@ -22,4 +22,5 @@ ValidateCommand::ValidateCommand(System* sPtr, int taskIndex) : EmployeeCommand(
 void ValidateCommand::execute()
 {
 	task->validate();
+	std::cout << "Validation successful. Request can now be approved." << std::endl;
 }

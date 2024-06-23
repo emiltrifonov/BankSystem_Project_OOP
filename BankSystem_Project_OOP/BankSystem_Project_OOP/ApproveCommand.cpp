@@ -16,6 +16,7 @@ void ApproveCommand::execute()
 {
 	try {
 		task->approve();
+		std::cout << "Request approved." << std::endl;
 		((Employee*)(sPtr->currentUser))->removeTaskAt(index);
 	}
 	catch (ChangeNotValidatedException& e) {

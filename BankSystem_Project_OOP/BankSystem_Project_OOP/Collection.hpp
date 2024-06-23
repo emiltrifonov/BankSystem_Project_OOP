@@ -18,6 +18,7 @@ public:
 
 	void add(const T& obj);
 	void add(T&& obj);
+	void add(T* ptr);
 
 	void removeAt(int index);
 
@@ -100,6 +101,16 @@ void Collection<T>::add(T&& obj) {
 		resize(capacity * 2);
 	}
 	data[size++] = new T(std::move(obj));
+}
+
+template<class T>
+void Collection<T>::add(T* ptr)
+{
+	if (size >= capacity) {
+		resize(capacity * 2);
+	}
+
+	data[size++] = ptr;
 }
 
 template<class T>

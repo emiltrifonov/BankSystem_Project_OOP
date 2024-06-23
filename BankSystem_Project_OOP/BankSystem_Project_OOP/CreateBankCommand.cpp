@@ -21,5 +21,5 @@ CreateBankCommand::CreateBankCommand(System* sPtr, const MyString& bankName) : b
 void CreateBankCommand::execute()
 {
 	sPtr->banks.add(bankName);
-	std::cout << "Bank created successfully" << std::endl << std::endl;
+	std::cout << "Bank created successfully" << std::endl;
 }
