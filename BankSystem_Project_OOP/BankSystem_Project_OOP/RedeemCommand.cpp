@@ -17,22 +17,18 @@ RedeemCommand::RedeemCommand(const MyString& bankName, int accID, const MyString
 
 void RedeemCommand::execute()
 {
-	Client* client = static_cast<Client*>(System::getInstance().getCurrentUser());
+	Client* client = (Client*)(System::getInstance().getCurrentUser());
+	client->getRedeemedCheques().add(*cheque);
+	account->addBalance(cheque->getSum());
 
-	Cheque* newChequePtr = new Cheque(*cheque);
-	client->getRedeemedCheques().add(*newChequePtr);
-	account->addBalance(newChequePtr->getSum());
-
-	std::cout << "Sum to redeem: " << cheque->getSum() << std::endl;
-
-	std::cout << newChequePtr->getSum() << "$ added to *" << account->getID() << "." << std::endl;
+	std::cout << cheque->getSum() << "$ added to *" << account->getID() << "." << std::endl;
 
 	client->getPendingCheques().removeAt(chequeIndex);
 }
 
 Cheque* RedeemCommand::getCheque(const MyString& verificationCode)
 {
-	Client* current = static_cast<Client*>(System::getInstance().getCurrentUser());
+	Client* current = (Client*)(System::getInstance().getCurrentUser());
 	int count = current->getPendingCheques().getSize();
 	Cheque* currCh = nullptr;
 

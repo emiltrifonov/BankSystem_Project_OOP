@@ -16,7 +16,6 @@ CloseTask::CloseTask(Client* cPtr, Bank* bPtr, int oldAccID) : cPtr(cPtr), bPtr(
 
 void CloseTask::list() const
 {
-	//std::cout << "[" << index << "]" <<
 	std::cout << "Close - " << cPtr->getFirstName() << " " << cPtr->getLastName()
 		<< " wants to close an account with ID " << oldAccID << "." << std::endl;
 }

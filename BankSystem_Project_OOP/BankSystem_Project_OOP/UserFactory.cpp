@@ -111,16 +111,26 @@ static void getPassword() {
     validateString(password);
 }
 
-Client* handleClient() {
+static Client* handleClient() {
     std::cout << "Address: ";
     MyString address;
     std::cin >> address;
     validateString(address);
 
-    return new Client(firstName, lastName, egn, password, age, address);
+    Client* cPtr = nullptr;
+    try
+    {
+        cPtr = new Client(firstName, lastName, egn, password, age, address);
+        return cPtr;
+    }
+    catch (const std::exception& e)
+    {
+        delete cPtr;
+        throw e;
+    }
 }
 
-Employee* handleEmployee() {
+static Employee* handleEmployee() {
     std::cout << "Bank associated: ";
     MyString bankName;
     std::cin >> bankName;
@@ -128,14 +138,31 @@ Employee* handleEmployee() {
     Bank* b = System::getInstance().getBank(bankName);
     validateBank(b);
 
-    Employee* e = new Employee(firstName, lastName, egn, password, age);
-    b->addEmployee(e);
-
-    return e;
+    Employee* ePtr = nullptr;
+    try
+    {
+        ePtr = new Employee(firstName, lastName, egn, password, age);
+        b->addEmployee(ePtr);
+        return ePtr;
+    }
+    catch (std::exception& e) {
+        delete ePtr;
+        throw e;
+    }
 }
 
-ThirdPartyEmployee* handleThirdPartyEmployee() {
-    return new ThirdPartyEmployee(firstName, lastName, egn, password, age);
+static ThirdPartyEmployee* handleThirdPartyEmployee() {
+    ThirdPartyEmployee* tpePtr = nullptr;
+
+    try 
+    {
+        tpePtr = new ThirdPartyEmployee(firstName, lastName, egn, password, age);
+        return tpePtr;
+    }
+    catch (std::exception& e) {
+        delete tpePtr;
+        throw e;
+    }
 }
 
 User* userFactory()

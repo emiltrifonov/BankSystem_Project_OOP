@@ -17,5 +17,4 @@ private:
 	Account* account = nullptr;
 
 	Cheque* getCheque(const MyString& verificationCode);
-
 };

@@ -2,12 +2,7 @@
 #include "Bank.h"
 #include "System.h"
 
-Bank::Bank(const MyString& name) : name(name) 
-{
-	if (name.isEmpty()) {
-		throw std::runtime_error("Bank must have a name");
-	}
-}
+Bank::Bank(const MyString& name) : name(name) { }
 
 const MyString& Bank::getName() const
 {
@@ -41,12 +36,12 @@ Employee* Bank::getLeastBusyEmployee()
 
 void Bank::openAccount(const Client* cPtr)
 {
-	accounts.add(*new Account(cPtr, getID()));
+	accounts.add(Account(cPtr, getID()));
 }
 
 // For change command when "copying" account from old to new bank
 void Bank::openAccount(Account& aPtr) {
-	accounts.add(*new Account(aPtr));
+	accounts.add(aPtr);
 }
 
 void Bank::closeAccount(int ID)
@@ -79,9 +74,37 @@ int Bank::getAccountsCount() const
 	return accounts.getSize();
 }
 
+void Bank::viewAccount(int ID) const
+{
+	for (int i = 0; i < accounts.getSize(); i++)
+	{
+		if (accounts[i].getID() == ID) {
+			accounts[i].getHolder()->whoami();
+			std::cout << "Bank: " << name << std::endl;
+			std::cout << "Acccount ID: " << accounts[i].getID() << std::endl;
+			std::cout << std::endl;
+			return;
+		}
+	}
+
+	throw std::out_of_range("");
+}
+
 Account& Bank::getAccountAt(int index)
 {
 	return accounts[index];
+}
+
+Account& Bank::getAccount(int ID)
+{
+	for (int i = 0; i < accounts.getSize(); i++)
+	{
+		if (accounts[i].getID() == ID) {
+			return accounts[i];
+		}
+	}
+
+	throw std::logic_error("Account doesn't exist");
 }
 
 bool Bank::existsAccount(int accID) const

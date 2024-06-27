@@ -9,9 +9,8 @@ ValidateCommand::ValidateCommand(int taskIndex) : EmployeeCommand(taskIndex)
 {
 	validateIndex(index);
 
-	Task* t = static_cast<Employee*>(System::getInstance().getCurrentUser())->getTaskAt(index);
+	Task* t = ((Employee*)(System::getInstance().getCurrentUser()))->getTaskAt(index);
 
-	// Nope
 	if (t->isChangeTask()) {
 		task = static_cast<ChangeTask*>(t);
 	}

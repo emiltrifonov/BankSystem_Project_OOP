@@ -14,7 +14,9 @@ public:
 	void help() const override final;
 	void whoami() const;
 
-	void addCheque(const Cheque* cheque);
+	void addCheque(const Cheque& cheque);
+
+	bool isClient() const override final;
 
 	Collection<Cheque>& getPendingCheques();
 	Collection<Cheque>& getRedeemedCheques();

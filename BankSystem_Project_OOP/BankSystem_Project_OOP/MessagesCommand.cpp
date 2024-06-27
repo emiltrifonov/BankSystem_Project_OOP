@@ -4,7 +4,7 @@
 
 void MessagesCommand::execute()
 {
-	const Client* user = dynamic_cast<Client*>(System::getInstance().getCurrentUser());
+	const Client* user = (Client*)(System::getInstance().getCurrentUser());
 	int count = user->getMessagesCount();
 
 	for (int i = 0; i < count; i++)

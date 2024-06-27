@@ -20,31 +20,9 @@ public:
 	bool isAccountValid(int ID, const Client* cPtr) const;
 
 	int getAccountsCount() const;
-	void viewAccount(int ID) const {
-		for (int i = 0; i < accounts.getSize(); i++)
-		{
-			if (accounts[i].getID() == ID) {
-				accounts[i].getHolder()->whoami();
-				std::cout << "Bank: " << name << std::endl;
-				std::cout << "Acccount ID: " << accounts[i].getID() << std::endl;
-				std::cout << std::endl;
-				return;
-			}
-		}
-
-		throw std::out_of_range("");
-	}
+	void viewAccount(int ID) const;
 	Account& getAccountAt(int index);
-	Account& getAccount(int ID) {
-		for (int i = 0; i < accounts.getSize(); i++)
-		{
-			if (accounts[i].getID() == ID) {
-				return accounts[i];
-			}
-		}
-
-		throw std::logic_error("Account doesn't exist");
-	}
+	Account& getAccount(int ID);
 
 	bool existsAccount(int accID) const;
 

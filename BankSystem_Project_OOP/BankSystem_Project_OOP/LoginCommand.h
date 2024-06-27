@@ -8,4 +8,7 @@ public:
 	LoginCommand();
 
 	void execute() override final;
+
+private:
+	void read(MyString& toRead, MyString prompt) const;
 };

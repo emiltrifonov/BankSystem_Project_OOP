@@ -17,5 +17,7 @@ private:
 	Client* recipient = nullptr;
 	User* sender = nullptr;
 
+	Message generateMessage() const;
+
 	bool isCurrentUserThirdPartyEmployee() const;
 };

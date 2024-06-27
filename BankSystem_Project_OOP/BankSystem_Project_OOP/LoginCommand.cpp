@@ -16,24 +16,8 @@ LoginCommand::LoginCommand()
 void LoginCommand::execute()
 {
 	MyString egn, password;
-
-	std::cout << "EGN: ";
-	char buffer1[1024];
-	std::cin.getline(buffer1, 1024);
-	std::stringstream ss1(buffer1);
-	ss1 >> egn;
-	if (!ss1.eof()) {
-		invalidCmd();
-	}
-	
-	std::cout << "Password: ";
-	char buffer2[1024];
-	std::cin.getline(buffer2, 1024);
-	std::stringstream ss2(buffer2);
-	ss2 >> password;
-	if (!ss2.eof()) {
-		invalidCmd();
-	}
+	read(egn, "EGN: ");
+	read(password, "Password: ");
 
 	int usersCount = System::getInstance().getUsersCount();
 	User* currentUser = nullptr;
@@ -42,18 +26,6 @@ void LoginCommand::execute()
 	{
 		currentUser = System::getInstance().getUserAt(i);
 		if (currentUser->getEGN() == egn && currentUser->getPassword() == password) {
-			
-			// Tova dano da ne e bilo vajno
-			/*if (currentUser->isClient()) {
-				System::getInstance().currentUser = (Client*)currentUser;
-			}
-			else if (currentUser->isEmployee()) {
-				System::getInstance().currentUser = (Employee*)currentUser;
-			}
-			else if (currentUser->isThirdPartyEmployee()) {
-				System::getInstance().currentUser = (ThirdPartyEmployee*)currentUser;
-			}*/
-
 			System::getInstance().login(currentUser);
 
 			std::cout << "Successful login, welcome "
@@ -64,4 +36,19 @@ void LoginCommand::execute()
 	}
 
 	invalidCmd();
+}
+
+void LoginCommand::read(MyString& toRead, MyString prompt) const
+{
+	std::cout << prompt;
+
+	char buffer[1024];
+	std::cin.getline(buffer, 1024);
+
+	std::stringstream ss(buffer);
+	ss >> toRead;
+
+	if (!ss.eof()) {
+		invalidCmd();
+	}
 }

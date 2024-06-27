@@ -16,8 +16,8 @@ CloseCommand::CloseCommand(const MyString& bankName, int accID) : accID(accID)
 void CloseCommand::execute()
 {
 	Employee* ePtr = bankPtr->getLeastBusyEmployee();
-	// Task factory probably
-	ePtr->addTask(new CloseTask(static_cast<Client*>(System::getInstance().getCurrentUser()), bankPtr, accID));
+	
+	ePtr->addTask(new CloseTask((Client*)(System::getInstance().getCurrentUser()), bankPtr, accID));
 
 	std::cout << "Close request sent to " << ePtr->getFirstName() << " " << ePtr->getLastName()
 		<< " from bank \"" << bankPtr->getName() << "\"." << std::endl;

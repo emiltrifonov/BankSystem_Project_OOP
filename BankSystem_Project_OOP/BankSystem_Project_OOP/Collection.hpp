@@ -4,7 +4,7 @@
 #define st size_t
 
 // Dynamic array of pointers (because a normal vector  requires
-// default constructor which makes no sense for many of the classes
+// default constructor which makes no sense for many of the classes)
 template<class T>
 class Collection {
 public:
@@ -29,7 +29,7 @@ public:
 	~Collection() noexcept;
 
 private:
-	T** data;
+	T** data = nullptr;
 	st size = 0;
 	st capacity = 8;
 
@@ -148,7 +148,7 @@ void Collection<T>::validateIndex(int index) const {
 
 template<class T>
 void Collection<T>::resize(st newCap) {
-	T** temp = new T * [newCap]();
+	T** temp = new (std::nothrow) T * [newCap] {nullptr};
 	for (size_t i = 0; i < size; i++) {
 		temp[i] = data[i];
 	}
@@ -185,4 +185,5 @@ void Collection<T>::free() {
 		delete data[i];
 	}
 	delete[] data;
+	data = nullptr;
 }

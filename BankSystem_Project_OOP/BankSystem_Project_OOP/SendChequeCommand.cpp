@@ -34,9 +34,17 @@ SendChequeCommand::SendChequeCommand(double sum, const MyString& verificationCod
 
 void SendChequeCommand::execute()
 {
-	Cheque* c = new Cheque(code, sum);
-	std::cout << c->getCode() << " " << c->getSum() << std::endl;
-	recipient->addCheque(new Cheque(code, sum));
+	recipient->addCheque(Cheque(code, sum));
+
+	Message message = generateMessage();
+
+	recipient->addMessage(message);
+
+	std::cout << "Cheque sent." << std::endl;
+}
+
+Message SendChequeCommand::generateMessage() const
+{
 	MyString message = "You have a cheque assigned to you by ";
 	message += sender->getFirstName();
 	message += " ";
@@ -44,9 +52,8 @@ void SendChequeCommand::execute()
 	message += " (verification code: ";
 	message += code.getCode();
 	message += ").";
-	recipient->addMessage({ message, nullptr });
 
-	std::cout << "Cheque sent." << std::endl;
+	return Message(message,nullptr);
 }
 
 bool SendChequeCommand::isCurrentUserThirdPartyEmployee() const

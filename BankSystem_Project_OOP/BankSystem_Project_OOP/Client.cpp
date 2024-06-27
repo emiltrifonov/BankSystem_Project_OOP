@@ -28,9 +28,9 @@ void Client::help() const
     std::cout << "exit - logs out of the system" << std::endl;
 }
 
-void Client::addCheque(const Cheque* cheque)
+void Client::addCheque(const Cheque& cheque)
 {
-    pendingCheques.add(*cheque);
+    pendingCheques.add(cheque);
 }
 
 bool Client::isClient() const

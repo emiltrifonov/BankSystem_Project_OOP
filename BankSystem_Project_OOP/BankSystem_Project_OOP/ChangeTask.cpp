@@ -15,7 +15,7 @@ void ChangeTask::list() const
 
 void ChangeTask::view() const
 {
-	std::cout << "Open request from:" << std::endl;
+	std::cout << "Change request from:" << std::endl;
 	std::cout << "Bank: " << oldBankPtr->getName() << std::endl;
 	cPtr->whoami();
 }
@@ -33,8 +33,6 @@ void ChangeTask::approve()
 
 	MyString messageText = "Your CHANGE request was approved ";
 
-	//cPtr->addMessage({ messageText, processor });
-
 	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser()});
 }
 
@@ -42,8 +40,6 @@ void ChangeTask::disapprove(const MyString& reason)
 {
 	MyString messageText = "Your CHANGE request was not approved. Reason:";
 	messageText += reason;
-
-	//cPtr->addMessage({ messageText, processor });
 
 	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }

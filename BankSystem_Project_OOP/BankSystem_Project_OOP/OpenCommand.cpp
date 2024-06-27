@@ -16,9 +16,8 @@ OpenCommand::OpenCommand(const MyString& bankName)
 
 void OpenCommand::execute()
 {
-	OpenTask* ot = new OpenTask((Client*)(System::getInstance().getCurrentUser()), bankPtr);
 	Employee* ePtr = bankPtr->getLeastBusyEmployee();
-	ePtr->addTask(ot);
+	ePtr->addTask(new OpenTask((Client*)(System::getInstance().getCurrentUser()), bankPtr));
 
 	std::cout << "Open request sent to " << ePtr->getFirstName() << " " << ePtr->getLastName()
 		<< " from bank \"" << bankPtr->getName() << "\"." << std::endl;

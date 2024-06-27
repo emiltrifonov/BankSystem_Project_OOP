@@ -19,9 +19,8 @@ ChangeCommand::ChangeCommand(const MyString& newBankName, const MyString& curren
 void ChangeCommand::execute()
 {
 	Employee* ePtr = newBankPtr->getLeastBusyEmployee();
-	// Task factory probably
-	ePtr->addTask(new ChangeTask(static_cast<Client*>
-		(System::getInstance().getCurrentUser()), currenBankPtr, newBankPtr, accID));
+	
+	ePtr->addTask(new ChangeTask((Client*)(System::getInstance().getCurrentUser()), currenBankPtr, newBankPtr, accID));
 
 	std::cout << "Change request sent to " << ePtr->getFirstName() << " " << ePtr->getLastName() 
 		<< " from bank \"" << newBankPtr->getName() << "\"." << std::endl;

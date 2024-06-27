@@ -24,17 +24,15 @@ void OpenTask::approve()
 	MyString messageText = "Your OPEN request to bank ";
 	messageText += bPtr->getName();
 	messageText += " was approved";
-	//cPtr->addMessage({ messageText, processor });
+
 	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }
 
 void OpenTask::disapprove(const MyString& reason)
 {
-	// Tui cqloto generirane na message trqa e nqkude otdelno
 	MyString messageText = "Your OPEN request was not approved. Reason:";
 	messageText += reason;
 
-	//cPtr->addMessage({ messageText, processor });
 	cPtr->addMessage({ messageText, (Employee*)System::getInstance().getCurrentUser() });
 }
 

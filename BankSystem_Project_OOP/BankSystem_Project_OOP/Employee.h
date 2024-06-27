@@ -11,6 +11,8 @@ public:
 
 	void whoami() const;
 
+	bool isEmployee() const override final;
+
 	void addTask(Task* t);
 	int getTaskCount() const;
 	Task* getTaskAt(int ind);

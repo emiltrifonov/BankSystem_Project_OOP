@@ -4,23 +4,17 @@
 #include "CommandFactory.h"
 #include "AllCommands.h"
 
-static bool skip = false; // Ugly but ehh
-static char* read() {
-	const int BUFF_SIZE = 1024;
-	char buffer[BUFF_SIZE];
-	if (!skip) {
-		std::cout << ">";
-	}
-	std::cin.getline(buffer, BUFF_SIZE);
-
-	return buffer;
-}
-
 // Utility
 static void validateCommand(std::stringstream& ss) {
 	// Checks if command has any excessive information
 	if (!ss.eof()) {
 		throw std::logic_error("Command format not supported");
+	}
+}
+
+static void validateBankName(MyString& bankName) {
+	if (bankName.isEmpty()) {
+		throw std::invalid_argument("Bank must have a name");
 	}
 }
 
@@ -59,6 +53,7 @@ static Command* handleCreateBank(std::stringstream& ss) {
 	MyString bankName;
 	ss >> bankName;
 	validateCommand(ss);
+	validateBankName(bankName);
 
 	return new CreateBankCommand(bankName);
 }
@@ -228,7 +223,15 @@ static Command* handleSendCheque(std::stringstream& ss) {
 
 Command* CommandFactory()
 {
-	std::stringstream ss(read());
+	static bool skip = false;
+	const int BUFF_SIZE = 1024;
+	char buffer[BUFF_SIZE];
+	if (!skip) {
+		std::cout << ">";
+	}
+	std::cin.getline(buffer, BUFF_SIZE);
+
+	std::stringstream ss(buffer);
 	MyString commandStr;
 	ss >> commandStr;
 
